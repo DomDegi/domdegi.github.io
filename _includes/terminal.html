@@ -1,0 +1,152 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.1.0/css/xterm.css" />
+<style>
+  .term-wrap { max-width: 900px; margin: 2rem auto; }
+  #terminal { height: 360px; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); overflow: hidden; }
+  .terminal-header { font-family: system-ui; color: #666; margin-bottom: 0.5rem; display:flex; justify-content:space-between; align-items:center; }
+  .terminal-mode { font-size:0.9rem; color:#0b6; }
+</style>
+
+<div class="term-wrap">
+  <div class="terminal-header">
+    <div>visitor@site:~</div>
+    <div class="terminal-mode" id="termMode">Terminal Mode</div>
+  </div>
+  <div id="terminal" role="application" aria-label="Terminal"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/xterm@5.1.0/lib/xterm.js"></script>
+<script>
+(async function(){
+  // init terminal
+  const { Terminal } = window;
+  const term = new Terminal({ cursorBlink: true, rows: 18, cols: 80 });
+  term.open(document.getElementById('terminal'));
+
+  // load site data (Jekyll exposes /assets/data or we can generate JSON page)
+  // We'll try to fetch '/data/course.json' (you can add via a build step), else fallback to inline defaults.
+  let siteData = null;
+  try {
+    const r = await fetch('/data/course.json');
+    if (r.ok) siteData = await r.json();
+  } catch(e) { /* ignore */ }
+
+  // fallback: minimal inline
+  if (!siteData) {
+    siteData = {
+      title: "Course",
+      description: "Course site",
+      schedule: "Wednesdays 12:30-2:20 PM",
+      instructors: [{name: "Staff", link: "#"}],
+      links: { discord: "#", lectures_pdf: "#" }
+    };
+  }
+
+  // show welcome
+  const write = (s='') => term.writeln(s);
+  const prompt = () => term.write('\r\n$ ');
+  write(`# ${siteData.title}`);
+  write(siteData.description);
+  prompt();
+
+  // input handling (simple)
+  let buffer = '';
+  const history = [];
+  let histIndex = -1;
+
+  // commands implementation
+  const commands = {
+    help: () => {
+      write('Available commands: help, about, schedule, instructors, links, clear, echo, mode');
+    },
+    about: () => {
+      write(siteData.description || '');
+    },
+    schedule: () => {
+      write(siteData.schedule || 'No schedule available.');
+    },
+    instructors: () => {
+      (siteData.instructors||[]).forEach(i => write(`- ${i.name} ${i.link ? '(' + i.link + ')' : ''}`));
+    },
+    links: () => {
+      if (siteData.links) {
+        Object.entries(siteData.links).forEach(([k,v]) => write(`${k}: ${v}`));
+      } else write('No links.');
+    },
+    clear: () => { term.clear(); },
+    echo: (args) => write(args.join(' ')),
+    mode: (args) => {
+      // toggle static/terminal mode for visual effect
+      const el = document.getElementById('termMode');
+      if (!args.length || args[0] === 'toggle') {
+        el.textContent = el.textContent.trim() === 'Terminal Mode' ? 'Static Mode' : 'Terminal Mode';
+        write('Mode toggled: ' + el.textContent);
+      } else {
+        el.textContent = args[0].toLowerCase() === 'static' ? 'Static Mode' : 'Terminal Mode';
+        write('Mode set to: ' + el.textContent);
+      }
+    }
+  };
+
+  // key handling
+  term.onKey(e => {
+    const ev = e.domEvent;
+    const key = e.key;
+
+    if (ev.key === 'Backspace') {
+      if (buffer.length > 0) {
+        buffer = buffer.slice(0,-1);
+        term.write('\b \b');
+      }
+      return;
+    }
+
+    if (ev.key === 'Enter') {
+      // run command
+      const raw = buffer.trim();
+      write(''); // move to new line
+      if (raw.length) {
+        history.push(raw);
+        histIndex = history.length;
+        const parts = raw.split(/\s+/);
+        const cmd = parts[0].toLowerCase();
+        const args = parts.slice(1);
+        if (commands[cmd]) {
+          try { commands[cmd](args); } catch(e) { write('Error: ' + e.message); }
+        } else {
+          write(`Command not found: ${cmd}. Type 'help' for commands.`);
+        }
+      }
+      buffer = '';
+      prompt();
+      return;
+    }
+
+    // Arrow up/down for history
+    if (ev.key === 'ArrowUp') {
+      if (history.length && histIndex > 0) histIndex--;
+      if (history[histIndex]) {
+        // erase current typed
+        while (buffer.length) { term.write('\b \b'); buffer = buffer.slice(0,-1); }
+        buffer = history[histIndex] || '';
+        term.write(buffer);
+      }
+      return;
+    }
+    if (ev.key === 'ArrowDown') {
+      if (history.length && histIndex < history.length - 1) histIndex++;
+      else { histIndex = history.length; }
+      // replace buffer
+      while (buffer.length) { term.write('\b \b'); buffer = buffer.slice(0,-1); }
+      if (history[histIndex]) { buffer = history[histIndex]; term.write(buffer); }
+      return;
+    }
+
+    // normal chars
+    if (key && key.length === 1) {
+      buffer += key;
+      term.write(key);
+    }
+  });
+
+})();
+</script>

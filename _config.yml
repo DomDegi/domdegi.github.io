@@ -25,8 +25,8 @@ description: >-
 baseurl: ""     # lascia vuoto per user/organization site
 url: "https://domdegi.github.io"
 github_username:  DomDegi
-linkedin_username:  domenicodegiorgio
-instagram_username:  domenico.degiorgio_
+linkedin_username: domenicodegiorgio
+instagram_username: domenico.degiorgio_
 
 # Build settings
 theme: minima
