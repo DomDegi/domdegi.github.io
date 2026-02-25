@@ -1,13 +1,21 @@
 ---
-layout: page
+layout: default
 title: Home
 permalink: /
 ---
 
-# Hello! I'm Domenico De Giorgio
-
-Welcome to my personal portfolio. I am currently pursuing an MSc in High Performance Computing at Politecnico di Milano. 
-
-Through this site, you can explore my [projects](/projects), review my [technical skills](/skills), read my [CV](/cv), or check out my [blog & notes](/blog) where I document my learning progress.
-
-Feel free to connect with me on [GitHub](https://github.com/{{ site.github_username }}) or [LinkedIn](https://www.linkedin.com/in/{{ site.linkedin_username }}/).
+<section class="hero">
+  <img src="{{ '/assets/images/profile-placeholder.jpg' | relative_url }}" alt="Domenico De Giorgio" class="hero-profile" />
+  <div class="hero-content">
+    <h1>Hello, I'm Domenico De Giorgio</h1>
+    <p class="hero-subtitle">BSc in Computer Engineering & MSc Candidate in High Performance Computing at Politecnico di Milano.</p>
+    <p>
+      I specialize in <strong>Scientific Computing</strong>, <strong>Mathematical Modeling</strong>, <strong>Software Engineering</strong>, and <strong>Statistics</strong>. 
+      My passion lies in bridging the gap between advanced mathematical theories and scalable, high-performance software solutions.
+    </p>
+    <div class="hero-actions" style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+      <a href="{{ '/projects/' | relative_url }}" class="btn" style="background: var(--accent-color); color: #fff; padding: 0.8rem 1.5rem; border-radius: 6px; font-weight: 500;">View Projects</a>
+      <a href="{{ '/cv/' | relative_url }}" class="btn" style="border: 1px solid var(--border-color); color: var(--text-color); padding: 0.8rem 1.5rem; border-radius: 6px; font-weight: 500;">Read CV</a>
+    </div>
+  </div>
+</section>

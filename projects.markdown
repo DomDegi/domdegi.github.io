@@ -4,18 +4,18 @@ title: Projects
 permalink: /projects/
 ---
 
-# My Projects
+Welcome to my project portfolio. Below you will find a selection of my academic work, personal projects, and contributions to open source.
 
-Here are some of the key projects I have worked on during my studies and in my personal time.
-
-## Project 1: [Placeholder Name]
-*A brief description of the project, the technologies used, and what you achieved.*
-- **Technologies:** C++, MPI, OpenMP
-- **Link:** [View on GitHub](#)
-
-## Project 2: [Placeholder Name]
-*Another project description. Highlight your problem-solving process and the impact of the work.*
-- **Technologies:** Python, Machine Learning, TensorFlow
-- **Link:** [View on GitHub](#)
-
-*(More projects will be added here soon)*
+<div class="project-grid">
+  {% for project in site.projects %}
+    <a href="{{ project.url | relative_url }}" class="project-card" style="text-decoration: none;">
+      <h3 class="project-title">{{ project.title }}</h3>
+      <p class="project-desc">{{ project.description }}</p>
+      <div class="project-tags">
+        {% for tag in project.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </a>
+  {% endfor %}
+</div>
