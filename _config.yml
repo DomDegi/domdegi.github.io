@@ -28,6 +28,13 @@ github_username:  DomDegi
 linkedin_username:  domenicodegiorgio
 instagram_username:  domenico.degiorgio_
 
+header_pages:
+  - index.markdown
+  - projects.markdown
+  - skills.markdown
+  - cv.markdown
+  - blog.markdown
+
 # Build settings
 theme: minima
 plugins:
