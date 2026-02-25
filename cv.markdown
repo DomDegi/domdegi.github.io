@@ -4,26 +4,35 @@ title: CV
 permalink: /cv/
 ---
 
+<a href="{{ '/assets/docs/cv_domenico_degiorgio.pdf' | relative_url }}" target="_blank" class="btn" style="float: right; text-decoration: none; padding: 0.6rem 1rem; border-radius: 6px; background-color: var(--accent-color); color: #fff; font-weight: 500;">
+  Download PDF
+</a>
+
 # Curriculum Vitae
 
-You can view my experience and educational background below. 
-*(Alternatively, you can provide a link to download a PDF version of your CV here).*
+**Domenico De Giorgio**  
+*Date of birth: 19/01/2004*  
+[domenicodegiorgio@icloud.com](mailto:domenicodegiorgio@icloud.com) | [+39 3891766712](tel:+393891766712)
+
+---
 
 ## Education
 
-**MSc in High Performance Computing**
-*Politecnico di Milano* | 202X - Present
-- Focus on Parallel Computing, Numerical Methods, and Advanced Architecture.
+**Politecnico di Milano** | Sep 2022 – Current
+*Engineering of Computer Systems / High Performance Computing*
 
-**BSc in [Your Bachelor Degree]**
-*[Your University]* | 202X - 202X
-- Focus on [Relevant topics].
-
-## Experience
-
-**[Job Title/Role]**
-*[Company/Organization Name]* | [Start Date] - [End Date]
-- [Description of responsibilities and achievements]
+**Liceo Scientifico "Ettore Majorana" Girifalco** | Sep 2017 – June 2022
+*High School Diploma*
 
 ---
-*Please reach out via email or LinkedIn for a complete and up-to-date resume in PDF format.*
+
+## Technical Skills
+- **Programming:** C, Java (good knowledge); Python, MATLAB (beginner)
+- **Computer Systems:** Architecture, memory management, operating systems
+- **Software Engineering:** UML, Git, Agile methodologies
+- **Databases:** SQL, ER modeling, normalization
+- **Web Development:** HTML, CSS, JavaScript, client-server models
+- **Electronics & Control Systems:** Circuit analysis, digital logic design, system modeling, PID controller design
+- **Numerical Methods:** Numerical analysis, operations research
+
+*(For complete details, please download the attached PDF version).*
