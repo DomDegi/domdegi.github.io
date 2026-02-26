@@ -176,12 +176,21 @@ li {
   display: flex;
   gap: 1.5rem;
   align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 @media (max-width: 650px) {
   .nav-container {
-    padding: 1rem 12px;
-    gap: 0.5rem;
+    padding: 0.5rem 12px;
+    gap: 0.8rem;
   }
 
   .desktop-title {
@@ -190,15 +199,22 @@ li {
 
   .mobile-title {
     display: inline;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
   }
 
   .nav-links {
-    gap: 0.8rem;
+    gap: 1.2rem;
+    flex: 1;
+    justify-content: flex-start;
   }
 
   .nav-links a {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .theme-toggle {
+    flex-shrink: 0;
   }
 }
 

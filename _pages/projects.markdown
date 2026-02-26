@@ -26,7 +26,8 @@ Welcome to my project portfolio. Below you will find a selection of my academic 
 </details>
 
 <div class="project-grid">
-  {% for project in site.projects %}
+  {% assign sorted_projects = site.projects | sort: 'weight' %}
+  {% for project in sorted_projects %}
     <a href="{{ project.url | relative_url }}" class="project-card" style="text-decoration: none;">
       <h3 class="project-title">{{ project.title }}</h3>
       <p class="project-desc">{{ project.description }}</p>

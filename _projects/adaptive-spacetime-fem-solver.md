@@ -1,8 +1,9 @@
 ---
 layout: page
 title: Adaptive Space-Time Finite Element Solver
-description: A deal.II-based C++ solver for the 2D heat equation featuring Adaptive Mesh Refinement (AMR), dynamic time-stepping, and MPI parallelization.
-tags: [C++, deal.II, FEM, Numerical Analysis, HPC, MPI, PDE]
+description: A distributed parallel implementation of a Space-Time Adaptive Finite Element Method (FEM) solver in C++ using deal.II and MPI.
+tags: [C++, MPI, deal.II, FEM, HPC, Parallel Computing]
+weight: 1
 ---
 
 # Adaptive Space-Time Finite Element Solver
