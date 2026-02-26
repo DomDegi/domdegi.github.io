@@ -7,9 +7,9 @@ permalink: /skills/
 Below is a comprehensive overview of my core technical competencies, ranging from low-level systems programming to advanced numerical analysis.
 
 ### High Performance Computing & Numerical Methods
-- **Parallel Computing:** MPI [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }}), OpenMP [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl/' | relative_url }}), CUDA (Basics)
+- **Parallel Computing:** MPI [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }}), OpenMP [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl/' | relative_url }}), [*(Life without Death)*]({{ '/projects/openmp-challenge/' | relative_url }}), CUDA [*(CUDA Challenge)*]({{ '/projects/cuda-challenge/' | relative_url }})
 - **Mathematical Modeling:** Finite Element Method (FEM) for PDEs [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }}), Numerical Analysis, Operations Research
-- **Numerical Libraries:** Eigen, deal.II [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }})
+- **Numerical Libraries:** Eigen [*(Numerical Linear Algebra)*]({{ '/projects/eigen-project/' | relative_url }}), deal.II [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }})
 
 ### Artificial Intelligence & Machine Learning
 - **Deep Learning Frameworks:** PyTorch [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification/' | relative_url }}), [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification/' | relative_url }})
@@ -18,7 +18,7 @@ Below is a comprehensive overview of my core technical competencies, ranging fro
 
 ### Programming Languages
 - **Advanced:** C [*(Logistics Simulation)*]({{ '/projects/order-management/' | relative_url }}), Java [*(Multiplayer Game)*]({{ '/projects/java-game/' | relative_url }}), [*(Grade Management)*]({{ '/projects/grade-management/' | relative_url }})
-- **Proficient:** C++ [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }}), [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl/' | relative_url }}), Python [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification/' | relative_url }}), [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification/' | relative_url }})
+- **Proficient:** C++ [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }}), [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl/' | relative_url }}), [*(Numerical Linear Algebra)*]({{ '/projects/eigen-project/' | relative_url }}), Python [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification/' | relative_url }}), [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification/' | relative_url }})
 - **Familiar:** HTML, CSS, JavaScript (AJAX/RIA) [*(Grade Management)*]({{ '/projects/grade-management/' | relative_url }}), MATLAB, VHDL [*(1D Filtering Hardware)*]({{ '/projects/vhdl-filter-design/' | relative_url }})
 - **Learning:** R
 
@@ -34,7 +34,7 @@ Below is a comprehensive overview of my core technical competencies, ranging fro
 
 ### Physics & Mathematics
 - **Physics:** Classical Mechanics, Thermodynamics, Quantum Physics & Mechanics
-- **Mathematics:** Advanced Calculus, Linear Algebra
+- **Mathematics:** Advanced Calculus, Linear Algebra [*(Numerical Linear Algebra)*]({{ '/projects/eigen-project/' | relative_url }})
 
 ### Electronics & Control Systems
 - Circuit analysis, digital logic design
