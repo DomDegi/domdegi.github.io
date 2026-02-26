@@ -4,11 +4,9 @@ title: Home
 permalink: /
 ---
 
-<section class="hero" style="align-items: center; margin-top: 3rem;">
-  <div style="flex: 1; width: 100%;">
-    <img src="{{ '/assets/images/profile-placeholder.jpg' | relative_url }}" alt="Domenico De Giorgio" style="width: 100%; height: auto; max-height: 550px; object-fit: cover; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);" />
-  </div>
-  <div class="hero-content" style="flex: 1;">
+<section class="hero" style="align-items: flex-start; margin-top: 3rem;">
+  <img src="{{ '/assets/images/profile-placeholder.jpg' | relative_url }}" alt="Domenico De Giorgio" class="hero-profile" style="width: 240px; height: 240px; flex-shrink: 0;" />
+  <div class="hero-content">
     <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Hello, I'm Domenico.</h1>
     <p class="hero-subtitle" style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem; font-weight: 400;">
       Born in 2004 in Calabria, Southern Italy.
