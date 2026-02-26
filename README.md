@@ -35,5 +35,4 @@ To run this site locally, ensure you have Ruby and Bundler installed.
    ```
 4. Navigate to `http://localhost:4000` in your browser.
 
-## 📫 Contact
-Feel free to reach out via [LinkedIn](https://www.linkedin.com/in/domenicodegiorgio/) or email me at domenicodegiorgio@icloud.com.
+

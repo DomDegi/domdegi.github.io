@@ -34,7 +34,6 @@ header_pages:
   - _pages/skills.markdown
   - _pages/cv.markdown
   - _pages/blog.markdown
-  - _pages/contact.markdown
 
 # Build settings
 # theme: minima
