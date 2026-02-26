@@ -36,8 +36,8 @@ permalink: /
     </div>
 
     <div class="hero-actions" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
-      <a href="{{ '/projects/' | relative_url }}" class="btn" style="background: var(--accent-color); color: #fff; border: 1px solid var(--accent-color); padding: 0.7rem 1.4rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; text-decoration: none; box-shadow: 0 4px 14px rgba(88, 166, 255, 0.25); transition: transform 0.2s, box-shadow 0.2s;">View Projects</a>
-      <a href="{{ '/cv/' | relative_url }}" class="btn" style="background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-color); padding: 0.7rem 1.4rem; border-radius: 6px; font-weight: 500; font-size: 0.95rem; display: flex; align-items: center; text-decoration: none; transition: background 0.2s;">Read CV</a>
+      <a href="{{ '/projects/' | relative_url }}" class="btn" style="border: 1px solid var(--border-color); color: var(--text-color); padding: 0.7rem 1.4rem; border-radius: 6px; font-weight: 500; font-size: 0.95rem;">View Projects</a>
+      <a href="{{ '/cv/' | relative_url }}" class="btn" style="border: 1px solid var(--border-color); color: var(--text-color); padding: 0.7rem 1.4rem; border-radius: 6px; font-weight: 500; font-size: 0.95rem;">Read CV</a>
     </div>
   </div>
 </section>
