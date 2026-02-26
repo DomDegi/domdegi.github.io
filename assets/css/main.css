@@ -206,6 +206,11 @@ li {
     gap: 1.2rem;
     flex: 1;
     justify-content: flex-start;
+    padding-right: 2rem;
+    /* Creates empty space at the end of scroll */
+    /* Fades the right edge to visually hint that there is more content */
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 2rem), transparent 100%);
+    mask-image: linear-gradient(to right, black calc(100% - 2rem), transparent 100%);
   }
 
   .nav-links a {
