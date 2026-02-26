@@ -5,8 +5,6 @@ description: A high-performance procedural C system optimizing industrial bakery
 tags: [C, Algorithms, Data Structures, HPC]
 ---
 
-# Industrial Bakery: Order and Inventory Management
-
 This project, developed for the "Algorithms and Data Structures" course at Politecnico di Milano, implements a discrete-time simulation of an industrial bakery. It manages complex logistics, including recipe catalogs, expiring inventory, and prioritized order fulfillment.
 
 **Final Grade: 30/30 cum laude**

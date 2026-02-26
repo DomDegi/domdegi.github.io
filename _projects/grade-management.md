@@ -5,11 +5,11 @@ description: A full-stack Java EE & JavaScript system for university exam manage
 tags: [Java, JavaScript, SQL, Web, Fullstack]
 ---
 
-Developed as part of the "Tecnologie Informatiche Web" course at Politecnico di Milano, this project implements a complete system for managing university exam sessions (appelli), student registrations, and grade verbalization.
+Developed as part of the "Tecnologie Informatiche per il Web" course at Politecnico di Milano, this project implements a complete system for managing university exam sessions (appelli), student registrations, and grade verbalization.
 
 To explore different web paradigms, the system was developed in two entirely distinct versions, each with its own repository.
 
-## 🏗️ The Two Implementations
+## The Two Implementations
 
 ### 1. Pure HTML Version (Server-Side Rendering)
 This version generates dynamic content strictly on the server before sending it to the client.
@@ -23,7 +23,7 @@ This version decouples the frontend from the backend, providing a fluid, app-lik
 * **Approach:** Single-page-like behavior. The frontend makes asynchronous **AJAX** calls to the server. The backend processes the logic and returns JSON responses using the **Gson** library. While not strictly a standard REST API, it utilizes RESTful principles for lightweight, asynchronous data exchange.
 * **Source Code:** [View RIA Version on GitHub](https://github.com/domdegi/tiw-js-2425)
 
-## 🎯 Major Challenges & Technical Implementations
+## Major Challenges & Technical Implementations
 
 Regardless of the rendering paradigm, building a robust academic management system required solving two major backend engineering challenges:
 
@@ -38,5 +38,5 @@ Structuring the pages securely was paramount, as the system strictly distinguish
 * **Access Control:** Implemented custom Java **Filters** to intercept requests, validate session tokens, and ensure that only Professors could reach Servlets responsible for creating sessions, modifying grades, or verbalizing exams.
 * **Routing Security:** In both the Thymeleaf routing and the AJAX endpoints, rigorous server-side validation was implemented to prevent privilege escalation and unauthorized data manipulation.
 
-## 📊 Project Documentation
-The entire architectural and user flow process for both versions was heavily documented prior to coding, using **IFML (Interaction Flow Modeling Language)** for UI mapping and **ER Diagrams** for the data model.
+## Project Documentation
+The entire architectural and user flow process for both versions was heavily documented prior to coding, using **IFML (Interaction Flow Modeling Language)** for UI mapping, **ER Diagrams** for the data model and **sequence diagrams** for the interaction flow.

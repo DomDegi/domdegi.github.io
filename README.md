@@ -10,6 +10,7 @@ The site serves as a central hub for my professional identity, showcasing my aca
 - **GitHub Pages**: For seamless CI/CD and hosting.
 
 ## 📁 Repository Structure
+- `_pages/`: Contains the markdown files for the pages of the website.
 - `_layouts/`: Contains the core HTML structure (`default.html` and `page.html`).
 - `assets/`: Holds custom CSS, vanilla JS for the theme toggle, images, and documents (like CV PDFs).
 - `_projects/`: A Jekyll Collection where each Markdown file automatically generates a dedicated project page.
