@@ -6,21 +6,24 @@ permalink: /projects/
 
 Welcome to my project portfolio. Below you will find a selection of my academic work, personal projects, and contributions to open source.
 
-<div class="filter-controls" style="margin-bottom: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-  <button class="filter-btn active" data-filter="all" style="padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--accent-color); color: #fff; cursor: pointer; font-size: 0.9rem;">All</button>
-  
-  {% assign all_tags = "" | split: "," %}
-  {% for project in site.projects %}
-    {% for tag in project.tags %}
-      {% assign all_tags = all_tags | push: tag %}
+<details style="margin-bottom: 2rem;">
+  <summary style="cursor: pointer; font-weight: 600; font-size: 1.05rem; color: var(--text-color); margin-bottom: 0.5rem; user-select: none;">Filter Projects by Tags</summary>
+  <div class="filter-controls" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+    <button class="filter-btn active" data-filter="all" style="padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--accent-color); color: #fff; cursor: pointer; font-size: 0.9rem;">All</button>
+    
+    {% assign all_tags = "" | split: "," %}
+    {% for project in site.projects %}
+      {% for tag in project.tags %}
+        {% assign all_tags = all_tags | push: tag %}
+      {% endfor %}
     {% endfor %}
-  {% endfor %}
-  {% assign unique_tags = all_tags | uniq | sort %}
-  
-  {% for tag in unique_tags %}
-    <button class="filter-btn" data-filter="{{ tag | downcase }}" style="padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-color); cursor: pointer; font-size: 0.9rem; transition: background 0.2s;">{{ tag }}</button>
-  {% endfor %}
-</div>
+    {% assign unique_tags = all_tags | uniq | sort %}
+    
+    {% for tag in unique_tags %}
+      <button class="filter-btn" data-filter="{{ tag | downcase }}" style="padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-color); cursor: pointer; font-size: 0.9rem; transition: background 0.2s;">{{ tag }}</button>
+    {% endfor %}
+  </div>
+</details>
 
 <div class="project-grid">
   {% for project in site.projects %}
