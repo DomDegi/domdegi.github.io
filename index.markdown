@@ -30,7 +30,7 @@ permalink: /
       <div>
         <h3 style="font-size: 1.1rem; color: var(--accent-color); margin-bottom: 0.3rem; margin-top: 0;">Future Prospects</h3>
         <p style="margin: 0; font-size: 1rem; color: var(--text-color);">
-          Dedicated to expanding my expertise in high-performance architectures and leading ambitious, data-driven projects in the HPC domain.
+          Dedicated to expanding my expertise in scientific computing and mathematical modellization of current problems in physics and engineering.
         </p>
       </div>
     </div>
