@@ -1,9 +1,7 @@
----
 layout: page
 title: Numerical Linear Algebra Applications in C++
 description: C++ applications leveraging the Eigen library to solve Numerical Linear Algebra problems, featuring sparse matrix-based image processing and graph Laplacian spectral analysis.
 tags: [C++, Eigen, Numerical Linear Algebra, Sparse Matrices, HPC]
----
 
 Developed as part of the Numerical Linear Algebra challenges, this project showcases the power of the **Eigen** C++ library to mathematically model and solve complex computational problems. The repository is split into two main experiments: image convolution via sparse matrices and spectral graph theory.
 
@@ -20,4 +18,5 @@ The second experiment focused on extracting the algebraic and spectral propertie
 
 * **Graph Laplacian:** Constructed an Adjacency Matrix ($A_g$) for a network, computed its degree vector to form a Diagonal Degree matrix ($D_g$), and derived the Graph Laplacian matrix ($L_g = D_g - A_g$).
 * **Matrix Property Verification:** Implemented custom numerical checks to verify the symmetry of the Laplacian using the Frobenius norm of the difference with its transpose. I also created an algorithm to check for **Positive Definiteness** by calculating the determinants of all leading principal minors (Sylvester's criterion).
-* **Eigenvalue Decomposition:** Utilized Eigen's `SelfAdjointEigenSolver` to decompose the symmetric Laplacian and extract the network's spectral properties, identifying the minimum and maximum eigenvalues.
+* **Eigenvalue Decomposition:** Utilized Eigen's `SelfAdjointEigenSolver` to decompose the symmetric Laplacian and extract the network's spectral properties, identifying the minimum and maximum eigenvalues.weight: 999
+---

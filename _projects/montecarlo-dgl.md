@@ -3,6 +3,7 @@ layout: page
 title: Advanced Monte Carlo Integration & Optimization Library
 description: A high-performance C++ library for N-dimensional Monte Carlo integration, MCMC, and stochastic optimization.
 tags: [C++, Monte Carlo, OpenMP, Optimization, HPC]
+weight: 2
 ---
 
 This project is a comprehensive C++ library designed to solve complex mathematical and engineering problems using advanced Monte Carlo integration and stochastic optimization algorithms. 

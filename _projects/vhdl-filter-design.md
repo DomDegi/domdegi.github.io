@@ -1,9 +1,7 @@
----
 layout: page
 title: Hardware Accelerator for 1D Differential Filtering
 description: A VHDL implementation of a hardware module for applying order 3 and order 5 differential filters on an FPGA.
 tags: [VHDL, FPGA, Hardware Design, Digital Logic]
----
 
 This project, part of the "Reti Logiche" (Digital Design) course at Politecnico di Milano, involved designing a hardware component in **VHDL** to perform 1D differential filtering on a sequence of data. The module interfaces with a synchronous RAM to read instructions and data, processes them, and writes the saturated results back to memory.
 
@@ -35,4 +33,5 @@ The component was synthesized successfully in Vivado with excellent performance 
 - **Timing:** Passed timing constraints easily, achieving a positive slack of $9.460\text{ ns}$ on a strict $20\text{ ns}$ clock period, proving the logic could run comfortably at speeds well above 50 MHz.
 - **Reliability:** Handled complex edge cases, such as multiple consecutive resets and memory out-of-bounds protection, passing all provided and custom testbenches.
 
-> **Source Code:** [View on GitHub](https://github.com/DomDegi/Prova_finale_reti_logiche)
+> **Source Code:** [View on GitHub](https://github.com/DomDegi/Prova_finale_reti_logiche)weight: 999
+---

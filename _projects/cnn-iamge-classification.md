@@ -3,6 +3,7 @@ layout: page
 title: Tissue Image Classification with Vision Transformers
 description: A deep learning pipeline for histological image classification, featuring complex data sanitization, ROI extraction, and the use of Vision Transformers (Phikon) combined with CatBoost.
 tags: [Python, PyTorch, Deep Learning, Computer Vision, Transformers, CatBoost, Kaggle]
+weight: 3
 ---
 
 # Tissue Image Classification with Vision Transformers

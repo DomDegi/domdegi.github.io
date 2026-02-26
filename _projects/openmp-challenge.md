@@ -1,9 +1,7 @@
----
 layout: page
 title: Life without Death Parallel Simulation
 description: A highly optimized HPC implementation of the "Life without Death" cellular automaton using OpenMP, focusing on cache locality and dynamic parallelization.
 tags: [C/C++, OpenMP, HPC, Parallel Computing, Optimization]
----
 
 This project consists of a parallel and hyper-optimized implementation of **Life without Death**, a variant of John Conway's famous *Game of Life* cellular automaton. The main objective was to maximize computational throughput and reduce execution times for simulations on large grids by exploiting multi-core architectures via **OpenMP**.
 
@@ -27,4 +25,5 @@ A fundamental part of HPC optimization is analyzing what *does not* work. The ex
 * **Static Assignment** of tasks produced less speedup due to the highly conditional and unbalanced behavior of the automaton's loops.
 * **Nested Parallelism** in the inner loops degraded overall performance due to the low number of available threads and the excessive overhead of creating and managing thread teams.
 
-> **Repository:** [View on GitHub](https://github.com/BENfrost-20/parallel_challenge_2) (private for now)
+> **Repository:** [View on GitHub](https://github.com/BENfrost-20/parallel_challenge_2) (private for now)weight: 999
+---

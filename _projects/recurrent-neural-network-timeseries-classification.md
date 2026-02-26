@@ -3,6 +3,7 @@ layout: page
 title: Time Series Classification with Recurrent Neural Networks
 description: A PyTorch-based deep learning framework for classifying time series data, featuring hybrid CNN-RNN architectures, distributed optimization, and ensembling techniques.
 tags: [Python, PyTorch, Deep Learning, Time Series, Optuna, Kaggle]
+weight: 4
 ---
 
 Developed for the Artificial Neural Networks and Deep Learning (AN2DL) Challenge at Politecnico di Milano, this project focuses on classifying sequential biomechanical sensor data to predict a subject's pain level (classes: `no_pain`, `low_pain`, `high_pain`).
