@@ -5,7 +5,7 @@ description: A VHDL implementation of a hardware module for applying order 3 and
 tags: [VHDL, FPGA, Hardware Design, Digital Logic]
 ---
 
-This project, part of the "Reti Logiche" (Logic Networks) course at Politecnico di Milano, involved designing a hardware component in **VHDL** to perform 1D differential filtering on a sequence of data. The module interfaces with a synchronous RAM to read instructions and data, processes them, and writes the saturated results back to memory.
+This project, part of the "Reti Logiche" (Digital Design) course at Politecnico di Milano, involved designing a hardware component in **VHDL** to perform 1D differential filtering on a sequence of data. The module interfaces with a synchronous RAM to read instructions and data, processes them, and writes the saturated results back to memory.
 
 ## The Challenge
 The hardware module had to process a continuous stream of 8-bit signed integers (complemento a 2). The process involved:
