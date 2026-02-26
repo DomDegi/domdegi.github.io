@@ -8,7 +8,6 @@ If you'd like to get in touch, please fill out the form below or reach out to me
 
 <form class="contact-form" action="https://formsubmit.co/{{ site.email }}" method="POST" style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin-top: 2rem;">
   <!-- FormSubmit Configuration -->
-  <input type="hidden" name="_subject" value="New submission from your Portfolio Website!">
   <input type="hidden" name="_captcha" value="false">
   
   <div style="display: flex; gap: 1rem;">
@@ -18,9 +17,14 @@ If you'd like to get in touch, please fill out the form below or reach out to me
     </div>
     
     <div style="flex: 1; display: flex; flex-direction: column;">
-      <label for="surname" style="margin-bottom: 0.5rem; font-weight: 500;">Surname</label>
-      <input type="text" id="surname" name="surname" required style="padding: 0.8rem; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-color); border-radius: 6px;">
+      <label for="email" style="margin-bottom: 0.5rem; font-weight: 500;">Email</label>
+      <input type="email" id="email" name="email" required style="padding: 0.8rem; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-color); border-radius: 6px;">
     </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column;">
+    <label for="_subject" style="margin-bottom: 0.5rem; font-weight: 500;">Subject</label>
+    <input type="text" id="_subject" name="_subject" required style="padding: 0.8rem; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-color); border-radius: 6px;">
   </div>
 
   <div style="display: flex; flex-direction: column;">
