@@ -11,9 +11,14 @@ Below is a comprehensive overview of my core technical competencies, ranging fro
 - **Mathematical Modeling:** Finite Element Method (FEM) for PDEs [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }}), Numerical Analysis, Operations Research
 - **Numerical Libraries:** Eigen, deal.II [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }})
 
+### Artificial Intelligence & Machine Learning
+- **Deep Learning Frameworks:** PyTorch [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification/' | relative_url }}), [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification/' | relative_url }})
+- **Neural Architectures:** CNNs, RNNs (LSTM, GRU, biGRU) [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification/' | relative_url }}), Vision Transformers (ViT) [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification/' | relative_url }})
+- **Machine Learning & Tooling:** CatBoost, Optuna, Data Augmentation [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification/' | relative_url }}), [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification/' | relative_url }})
+
 ### Programming Languages
 - **Advanced:** C [*(Logistics Simulation)*]({{ '/projects/order-management/' | relative_url }}), Java [*(Multiplayer Game)*]({{ '/projects/java-game/' | relative_url }}), [*(Grade Management)*]({{ '/projects/grade-management/' | relative_url }})
-- **Proficient:** C++ [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }}), [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl/' | relative_url }}), Python
+- **Proficient:** C++ [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }}), [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl/' | relative_url }}), Python [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification/' | relative_url }}), [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification/' | relative_url }})
 - **Familiar:** HTML, CSS, JavaScript (AJAX/RIA) [*(Grade Management)*]({{ '/projects/grade-management/' | relative_url }}), MATLAB, VHDL [*(1D Filtering Hardware)*]({{ '/projects/vhdl-filter-design/' | relative_url }})
 - **Learning:** R
 
