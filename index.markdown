@@ -36,7 +36,7 @@ permalink: /
     </div>
 
     <div class="hero-actions" style="display: flex; gap: 1rem;">
-      <a href="{{ '/projects/' | relative_url }}" class="btn" style="background: var(--accent-color); color: #fff; padding: 0.7rem 1.4rem; border-radius: 6px; font-weight: 500; font-size: 0.95rem;">View Projects</a>
+      <a href="{{ '/projects/' | relative_url }}" class="btn" style="border: 1px solid var(--border-color); color: var(--text-color); padding: 0.7rem 1.4rem; border-radius: 6px; font-weight: 500; font-size: 0.95rem;">View Projects</a>
       <a href="{{ '/cv/' | relative_url }}" class="btn" style="border: 1px solid var(--border-color); color: var(--text-color); padding: 0.7rem 1.4rem; border-radius: 6px; font-weight: 500; font-size: 0.95rem;">Read CV</a>
     </div>
   </div>

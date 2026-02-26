@@ -5,8 +5,6 @@ description: A Java-based client-server digital board game utilizing the MVC pat
 tags: [Java, MVC, Networking, JavaFX, Maven, JUnit5]
 ---
 
-# Galaxy Trucker: Client-Server Multiplayer Game
-
 This project is a complete digital transposition of the complex board game *Galaxy Trucker*. Developed as a comprehensive Software Engineering project, it features a highly decoupled **Client-Server architecture** utilizing the classic **Model-View-Controller (MVC)** paradigm.
 
 *Note: The repository (`IS25-AM06`) is currently private to comply with academic integrity policies.*
