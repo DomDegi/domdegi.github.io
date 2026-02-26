@@ -6,7 +6,10 @@ permalink: /contact/
 
 If you'd like to get in touch, please fill out the form below or reach out to me directly via my [LinkedIn](https://www.linkedin.com/in/{{ site.linkedin_username }}/).
 
-<form class="contact-form" action="https://formspree.io/f/YOUR_ID" method="POST" style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin-top: 2rem;">
+<form class="contact-form" action="https://formsubmit.co/{{ site.email }}" method="POST" style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin-top: 2rem;">
+  <!-- FormSubmit Configuration -->
+  <input type="hidden" name="_subject" value="New submission from your Portfolio Website!">
+  <input type="hidden" name="_captcha" value="false">
   
   <div style="display: flex; gap: 1rem;">
     <div style="flex: 1; display: flex; flex-direction: column;">
