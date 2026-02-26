@@ -30,11 +30,11 @@ instagram_username:  domenico.degiorgio_
 
 header_pages:
   - index.markdown
-  - projects.markdown
-  - skills.markdown
-  - cv.markdown
-  - blog.markdown
-  - contact.markdown
+  - _pages/projects.markdown
+  - _pages/skills.markdown
+  - _pages/cv.markdown
+  - _pages/blog.markdown
+  - _pages/contact.markdown
 
 # Build settings
 # theme: minima
