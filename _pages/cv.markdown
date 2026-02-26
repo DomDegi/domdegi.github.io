@@ -5,10 +5,9 @@ permalink: /cv/
 ---
 
 <div style="text-align: center; margin-top: 3rem; margin-bottom: 4rem;">
-  <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Curriculum Vitae</h1>
-  <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem;">
+  <p style="font-size: 1.25rem; color: var(--text-color); margin-bottom: 2rem;">
     <strong>Domenico De Giorgio</strong><br>
-    BSc in Computer Engineering & MSc Candidate in HPC at Politecnico di Milano.
+    <span style="font-size: 1.1rem; color: var(--text-muted);">BSc in Computer Engineering & MSc Candidate in HPC at Politecnico di Milano.</span>
   </p>
 
   <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 3rem;">
