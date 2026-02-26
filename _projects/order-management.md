@@ -1,7 +1,9 @@
+---
 layout: page
 title: Industrial Bakery - Order & Inventory Management
 description: A high-performance procedural C system optimizing industrial bakery logistics through advanced data structures.
 tags: [C, Algorithms, Data Structures, Optimization]
+---
 
 This project, developed for the "Algorithms and Data Structures" course at Politecnico di Milano, implements a discrete-time simulation of an industrial bakery. It manages complex logistics, including recipe catalogs, expiring inventory, and prioritized order fulfillment.
 
@@ -44,4 +46,3 @@ The project successfully passed all automated test suites, demonstrating:
 - **Performance Profiling**: Learned to identify and resolve performance bottlenecks and time expenses using **Valgrind** and **KCachegrind**.
 
 > **Source Code:** [View on GitHub](https://github.com/domdegi/progetto-api-2024) *(Replace with your actual link)*weight: 999
----

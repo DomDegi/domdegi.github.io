@@ -1,7 +1,9 @@
+---
 layout: page
 title: Personal Portfolio & Tech Blog
 description: A responsive, static portfolio website built with Jekyll, featuring a custom theme, dark mode, and automated deployment.
 tags: [Web, Jekyll, HTML/CSS, JavaScript]
+---
 
 This website was built from scratch to serve as a central hub for my academic projects, professional CV, and technical blog. It is designed to be lightweight, fast, and highly maintainable.
 
@@ -28,4 +30,3 @@ Rather than hardcoding the project gallery, I utilized Jekyll's **Collections** 
 The layout uses modern CSS techniques like **Flexbox** and **CSS Grid** to ensure the interface adapts fluidly to any screen size, from mobile devices to large desktop monitors.
 
 > **Source Code:** [View on GitHub](https://github.com/DomDegi/domdegi.github.io)weight: 999
----

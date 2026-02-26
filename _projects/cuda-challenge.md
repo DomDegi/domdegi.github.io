@@ -1,7 +1,9 @@
+---
 layout: page
 title: High-Performance CUDA Batched Matrix Multiplication
 description: A custom, highly optimized CUDA C++ kernel for executing batched matrix multiplications, featuring shared memory tiling, thread coarsening, and bank conflict avoidance.
 tags: [C/C++, CUDA, HPC, GPU Computing, Parallel Computing]
+---
 
 Developed for the Parallel Computing course at Politecnico di Milano, this project involves the design and low-level optimization of a custom **CUDA C++ kernel** for batched matrix multiplication. 
 
@@ -24,4 +26,3 @@ Instead of the standard approach where one thread computes exactly one element o
 * **Loop Unrolling:** Forced `#pragma unroll` on the inner micro-tile calculation loops to minimize branch overhead and improve the instruction pipeline.
 
 > **Repository:** [View on GitHub](#) *(Add the actual link once public)*weight: 999
----

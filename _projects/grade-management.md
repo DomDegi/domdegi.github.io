@@ -1,7 +1,9 @@
+---
 layout: page
 title: Grade Management Web Application
 description: A full-stack Java EE & JavaScript system for university exam management, featuring a decoupled RIA architecture.
 tags: [Java, JavaScript, SQL, Web, Fullstack]
+---
 
 Developed as part of the "Tecnologie Informatiche per il Web" course at Politecnico di Milano, this project implements a complete system for managing university exam sessions (appelli), student registrations, and grade verbalization.
 
@@ -38,4 +40,3 @@ Structuring the pages securely was paramount, as the system strictly distinguish
 
 ## Project Documentation
 The entire architectural and user flow process for both versions was heavily documented prior to coding, using **IFML (Interaction Flow Modeling Language)** for UI mapping, **ER Diagrams** for the data model and **sequence diagrams** for the interaction flow.weight: 999
----
