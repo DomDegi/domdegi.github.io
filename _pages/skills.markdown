@@ -7,19 +7,19 @@ permalink: /skills/
 Below is a comprehensive overview of my core technical competencies, ranging from low-level systems programming to advanced numerical analysis.
 
 ### High Performance Computing & Numerical Methods
-- **Parallel Computing:** MPI [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }}), OpenMP [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl/' | relative_url }}), [*(Life without Death)*]({{ '/projects/openmp-challenge/' | relative_url }}), CUDA [*(CUDA Challenge)*]({{ '/projects/cuda-challenge/' | relative_url }})
-- **Mathematical Modeling:** Finite Element Method (FEM) for PDEs [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }}), Numerical Analysis, Operations Research
-- **Numerical Libraries:** Eigen [*(Numerical Linear Algebra)*]({{ '/projects/eigen-project/' | relative_url }}), deal.II [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }})
+- **Parallel Computing:** MPI [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver.html' | relative_url }}), OpenMP [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl.html' | relative_url }}), [*(Life without Death)*]({{ '/projects/openmp-challenge.html' | relative_url }}), CUDA [*(CUDA Challenge)*]({{ '/projects/cuda-challenge.html' | relative_url }})
+- **Mathematical Modeling:** Finite Element Method (FEM) for PDEs [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver.html' | relative_url }}), Numerical Analysis, Operations Research
+- **Numerical Libraries:** Eigen [*(Numerical Linear Algebra)*]({{ '/projects/eigen-project.html' | relative_url }}), deal.II [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver.html' | relative_url }})
 
 ### Artificial Intelligence & Machine Learning
-- **Deep Learning Frameworks:** PyTorch [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification/' | relative_url }}), [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification/' | relative_url }})
-- **Neural Architectures:** CNNs, RNNs (LSTM, GRU, biGRU) [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification/' | relative_url }}), Vision Transformers (ViT) [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification/' | relative_url }})
-- **Machine Learning & Tooling:** CatBoost, Optuna, Data Augmentation [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification/' | relative_url }}), [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification/' | relative_url }})
+- **Deep Learning Frameworks:** PyTorch [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification.html' | relative_url }}), [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification.html' | relative_url }})
+- **Neural Architectures:** CNNs, RNNs (LSTM, GRU, biGRU) [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification.html' | relative_url }}), Vision Transformers (ViT) [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification.html' | relative_url }})
+- **Machine Learning & Tooling:** CatBoost, Optuna, Data Augmentation [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification.html' | relative_url }}), [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification.html' | relative_url }})
 
 ### Programming Languages
-- **Advanced:** C [*(Logistics Simulation)*]({{ '/projects/order-management/' | relative_url }}), Java [*(Multiplayer Game)*]({{ '/projects/java-game/' | relative_url }}), [*(Grade Management)*]({{ '/projects/grade-management/' | relative_url }})
-- **Proficient:** C++ [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver/' | relative_url }}), [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl/' | relative_url }}), [*(Numerical Linear Algebra)*]({{ '/projects/eigen-project/' | relative_url }}), Python [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification/' | relative_url }}), [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification/' | relative_url }})
-- **Familiar:** HTML, CSS, JavaScript (AJAX/RIA) [*(Grade Management)*]({{ '/projects/grade-management/' | relative_url }}), MATLAB, VHDL [*(1D Filtering Hardware)*]({{ '/projects/vhdl-filter-design/' | relative_url }})
+- **Advanced:** C [*(Logistics Simulation)*]({{ '/projects/order-management.html' | relative_url }}), Java [*(Multiplayer Game)*]({{ '/projects/java-game.html' | relative_url }}), [*(Grade Management)*]({{ '/projects/grade-management.html' | relative_url }})
+- **Proficient:** C++ [*(Adaptive FEM Solver)*]({{ '/projects/adaptive-spacetime-fem-solver.html' | relative_url }}), [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl.html' | relative_url }}), [*(Numerical Linear Algebra)*]({{ '/projects/eigen-project.html' | relative_url }}), Python [*(Time Series Classification)*]({{ '/projects/recurrent-neural-network-timeseries-classification.html' | relative_url }}), [*(Tissue Image Classification)*]({{ '/projects/cnn-iamge-classification.html' | relative_url }})
+- **Familiar:** HTML, CSS, JavaScript (AJAX/RIA) [*(Grade Management)*]({{ '/projects/grade-management.html' | relative_url }}), MATLAB, VHDL [*(1D Filtering Hardware)*]({{ '/projects/vhdl-filter-design.html' | relative_url }})
 - **Learning:** R
 
 ### Systems & Architecture
@@ -29,12 +29,12 @@ Below is a comprehensive overview of my core technical competencies, ranging fro
 
 ### Software Engineering & Tools
 - Version Control (Git), UML, Agile Methodologies
-- **Relational Databases:** SQL, ER modeling, DAO Pattern [*(Grade Management)*]({{ '/projects/grade-management/' | relative_url }})
-- **Performance Profiling:** Valgrind, KCachegrind, Perf [*(Logistics Simulation)*]({{ '/projects/order-management/' | relative_url }}), [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl/' | relative_url }})
+- **Relational Databases:** SQL, ER modeling, DAO Pattern [*(Grade Management)*]({{ '/projects/grade-management.html' | relative_url }})
+- **Performance Profiling:** Valgrind, KCachegrind, Perf [*(Logistics Simulation)*]({{ '/projects/order-management.html' | relative_url }}), [*(Monte Carlo Library)*]({{ '/projects/montecarlo-dgl.html' | relative_url }})
 
 ### Physics & Mathematics
 - **Physics:** Classical Mechanics, Thermodynamics, Quantum Physics & Mechanics
-- **Mathematics:** Advanced Calculus, Linear Algebra [*(Numerical Linear Algebra)*]({{ '/projects/eigen-project/' | relative_url }})
+- **Mathematics:** Advanced Calculus, Linear Algebra [*(Numerical Linear Algebra)*]({{ '/projects/eigen-project.html' | relative_url }})
 
 ### Electronics & Control Systems
 - Circuit analysis, digital logic design
