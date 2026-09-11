@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Hardware Accelerator for 1D Differential Filtering
-description: A VHDL implementation of a hardware module for applying order 3 and order 5 differential filters on an FPGA.
+description: "VHDL RTL design: an FSM-driven datapath, synchronous RAM interfacing and saturation arithmetic, verified with simulation testbenches for FPGA synthesis."
 tags: [VHDL, FPGA, Hardware Design, Digital Logic]
 ---
 
@@ -35,4 +35,4 @@ The component was synthesized successfully in Vivado with excellent performance 
 - **Timing:** Passed timing constraints easily, achieving a positive slack of $9.460\text{ ns}$ on a strict $20\text{ ns}$ clock period, proving the logic could run comfortably at speeds well above 50 MHz.
 - **Reliability:** Handled complex edge cases, such as multiple consecutive resets and memory out-of-bounds protection, passing all provided and custom testbenches.
 
-> **Source Code:** [View on GitHub](https://github.com/DomDegi/Prova_finale_reti_logiche)weight: 999
+> **Source Code:** [View on GitHub](https://github.com/DomDegi/Prova_finale_reti_logiche)

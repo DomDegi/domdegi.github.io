@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Grade Management Web Application
-description: A full-stack Java EE & JavaScript system for university exam management, featuring a decoupled RIA architecture.
+description: "Java EE servlets, JDBC and the DAO pattern, built twice: server-side templating and a JavaScript single-page client on the same backend."
 tags: [Java, JavaScript, SQL, Web, Fullstack]
 ---
 
@@ -39,4 +39,4 @@ Structuring the pages securely was paramount, as the system strictly distinguish
 * **Routing Security:** In both the Thymeleaf routing and the AJAX endpoints, rigorous server-side validation was implemented to prevent privilege escalation and unauthorized data manipulation.
 
 ## Project Documentation
-The entire architectural and user flow process for both versions was heavily documented prior to coding, using **IFML (Interaction Flow Modeling Language)** for UI mapping, **ER Diagrams** for the data model and **sequence diagrams** for the interaction flow.weight: 999
+The entire architectural and user flow process for both versions was heavily documented prior to coding, using **IFML (Interaction Flow Modeling Language)** for UI mapping, **ER Diagrams** for the data model and **sequence diagrams** for the interaction flow.

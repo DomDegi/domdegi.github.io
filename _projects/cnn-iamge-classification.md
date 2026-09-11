@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Tissue Image Classification with Vision Transformers
-description: A deep learning pipeline for histological image classification, featuring complex data sanitization, ROI extraction, and the use of Vision Transformers (Phikon) combined with CatBoost.
+description: "PyTorch, Vision Transformers and CatBoost: transfer learning on histology images with ROI extraction, data sanitisation and gradient-boosted classification."
 tags: [Python, PyTorch, Deep Learning, Computer Vision, Transformers, CatBoost, Kaggle]
 weight: 3
 ---
@@ -34,4 +34,4 @@ To solve this, the architecture was split into a two-stage pipeline (Feature Ext
 ## 📈 Results
 By combining Transformer-based feature extraction, robust classification with CatBoost, and *Test-Time Augmentation (TTA)* to stabilize predictions, the final model outperformed pure convolutional architectures, achieving an F1-score of ~0.41 on the test set.
 
-> **Repository:** [View on GitHub](https://github.com/Andrik146/AN2DL-I-Fantastici-4-Part-2) (Private for now)
+> **Repository:** [View on GitHub](https://github.com/Andrik146/AN2DL-I-Fantastici-4-Part-2)

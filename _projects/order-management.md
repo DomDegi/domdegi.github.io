@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Industrial Bakery - Order & Inventory Management
-description: A high-performance procedural C system optimizing industrial bakery logistics through advanced data structures.
+description: "Procedural C and hand-rolled data structures: hash tables, heaps and binary search trees, profiled with Valgrind and perf for a discrete-event simulation."
 tags: [C, Algorithms, Data Structures, Optimization]
 ---
 
@@ -45,4 +45,4 @@ The project successfully passed all automated test suites, demonstrating:
 - Rigorous handling of edge cases, such as ingredient expiration and partial truck loads.
 - **Performance Profiling**: Learned to identify and resolve performance bottlenecks and time expenses using **Valgrind** and **KCachegrind**.
 
-> **Source Code:** [View on GitHub](https://github.com/domdegi/progetto-api-2024) *(Replace with your actual link)*weight: 999
+> **Source Code:** [View on GitHub](https://github.com/domdegi/progetto-api-2024)

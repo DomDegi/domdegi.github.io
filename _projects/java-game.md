@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Galaxy Trucker Multiplayer Digital Adaptation
-description: A Java-based client-server digital board game utilizing the MVC pattern, RMI/Sockets, and JavaFX.
+description: "Java client-server architecture: MVC, RMI and sockets, JavaFX, Maven and JUnit 5, in a full multiplayer implementation of a complex board game."
 tags: [Java, MVC, Networking, JavaFX, Maven, JUnit5]
 weight: 2
 ---
@@ -33,4 +33,4 @@ To provide accessibility across different environments, the client application s
 * **Network Resilience:** Engineered robust ping/pong heartbeat mechanisms to detect client disconnections, gracefully handle player reconnections, and pause/resume game states without crashing the server.
 * **State Synchronization:** Designed an efficient broadcast system using the Observer pattern to push localized state updates to all connected Fat Clients whenever the central Model changes.
 
-> **Repository:** [View on GitHub](https://github.com/DomDegi/IS25-AM06) *(Currently Private)*weight: 999
+> **Repository:** [View on GitHub](https://github.com/DomDegi/IS25-AM06)

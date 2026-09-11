@@ -1,7 +1,7 @@
 ---
 layout: page
 title: AstraLog-HPC Telemetry Rule Engine
-description: A Python/Polars telemetry alarm engine for a simulated ESA call for tenders, with a zero-touch CI/CD pipeline spanning GitHub Actions and CINECA's GitLab.
+description: "Python and Polars behind a GitHub Actions CI/CD pipeline: containerised builds, automated testing, semantic releases and deployment to a CINECA HPC cluster."
 tags: [Python, Polars, CI/CD, GitHub Actions, Docker, DevOps, HPC, Software Engineering]
 featured: true
 weight: 2

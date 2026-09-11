@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Time Series Classification with Recurrent Neural Networks
-description: A PyTorch-based deep learning framework for classifying time series data, featuring hybrid CNN-RNN architectures, distributed optimization, and ensembling techniques.
+description: "PyTorch, Optuna and model ensembling: hybrid CNN-RNN architectures (LSTM, GRU, biGRU) for time-series classification with automated hyperparameter search."
 tags: [Python, PyTorch, Deep Learning, Time Series, Optuna, Kaggle]
 weight: 4
 ---
@@ -30,4 +30,4 @@ To maximize accuracy and mitigate overfitting on such a small dataset, the train
 * Starting from a validation F1-score of ~85.00% with the baseline RNN, introducing the biGRU and advanced techniques (like Focal Loss and LR schedulers) brought the single-model score to **96.07%**.
 * By implementing an **Ensemble Inference** strategy based on majority voting across different architectures, the final performance reached an **overall F1-score of 0.97**.
 
-> **Repository:** [View on GitHub](https://github.com/Andrik146/AN2DL-I-Fantastici-4-Part-1) (Private for now)
+> **Repository:** [View on GitHub](https://github.com/Andrik146/AN2DL-I-Fantastici-4-Part-1)

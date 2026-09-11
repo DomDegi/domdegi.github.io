@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Life without Death Parallel Simulation
-description: A highly optimized HPC implementation of the "Life without Death" cellular automaton using OpenMP, focusing on cache locality and dynamic parallelization.
+description: "OpenMP and cache-aware optimisation in C/C++: loop restructuring, data locality and dynamic scheduling on a cellular-automaton workload."
 tags: [C/C++, OpenMP, HPC, Parallel Computing, Optimization]
 ---
 
@@ -27,4 +27,4 @@ A fundamental part of HPC optimization is analyzing what *does not* work. The ex
 * **Static Assignment** of tasks produced less speedup due to the highly conditional and unbalanced behavior of the automaton's loops.
 * **Nested Parallelism** in the inner loops degraded overall performance due to the low number of available threads and the excessive overhead of creating and managing thread teams.
 
-> **Repository:** [View on GitHub](https://github.com/BENfrost-20/parallel_challenge_2) (private for now)weight: 999
+> **Repository:** [View on GitHub](https://github.com/BENfrost-20/parallel_challenge_2)

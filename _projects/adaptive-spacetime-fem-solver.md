@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Adaptive Space-Time Finite Element Solver
-description: A distributed parallel implementation of a Space-Time Adaptive Finite Element Method (FEM) solver in C++ using deal.II and MPI.
+description: "C++ with MPI and deal.II: adaptive mesh refinement, Crank-Nicolson time stepping and an AMG-preconditioned conjugate gradient solver, benchmarked on an HPC cluster."
 tags: [C++, MPI, deal.II, FEM, HPC, Parallel Computing]
 featured: true
 weight: 3
