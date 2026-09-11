@@ -27,7 +27,23 @@ nix-shell -p chromium --run "chromium --headless --no-sandbox --hide-scrollbars 
   --virtual-time-budget=4000 --window-size=1280,3400 --screenshot=/tmp/shot.png http://127.0.0.1:4321/"
 ```
 
-Two caveats when verifying this way: nixpkgs ships plain Jekyll 4.x rather than the `github-pages` gem set, so it is a close approximation of the deploy build but not identical; and **IntersectionObserver never re-fires after a programmatic scroll in headless Chromium** — the nav scrollspy cannot be verified this way and must be checked in a real browser.
+One caveat when verifying this way: **IntersectionObserver never re-fires after a programmatic scroll in headless Chromium** — the nav scrollspy cannot be verified this way and must be checked in a real browser.
+
+**Verify against Jekyll 3.10, not just 4.x.** GitHub Pages still builds with Jekyll 3.10 and Liquid 4.0.4, which is stricter than the Jekyll 4.x in nixpkgs. Liquid that builds locally can fail the deploy — most notably **`where_exp` cannot parse compound `and` / `or` conditions** on Pages (`Liquid syntax error: Expected end_of_string but found id`); split them into single-condition steps. A failed Pages build creates no deployment at all, so the live site silently stays on the previous commit:
+
+```bash
+# does this commit actually build the way Pages will?
+rm -rf /tmp/j3src && mkdir -p /tmp/j3src
+tar -c --exclude=.git --exclude=Gemfile --exclude=.bundle --exclude=vendor . | tar -x -C /tmp/j3src
+(cd /tmp/j3src && nix-shell -p rubyPackages.jekyll rubyPackages.jekyll-feed rubyPackages.kramdown-parser-gfm \
+  --run "unset BUNDLE_GEMFILE; JEKYLL_NO_BUNDLER_REQUIRE=true jekyll build --source /tmp/j3src --destination /tmp/j3site")
+
+# did the push actually deploy? compare the newest sha here against git rev-parse HEAD
+curl -s "https://api.github.com/repos/DomDegi/domdegi.github.io/deployments?per_page=1" | grep '"sha"'
+```
+
+The Gemfile must be excluded from that copy or Bundler tries to resolve `minima` and aborts.
+
 
 `_config.yml` is *not* hot-reloaded — a change there needs the serve process restarted.
 

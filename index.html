@@ -69,8 +69,11 @@ permalink: /
     {% comment %}Featured first: set `featured: true` in a project's front matter to
     promote it, and `weight` to order it within its group.{% endcomment %}
     {% assign featured = site.projects | where: "featured", true | sort: 'weight' %}
-    {% assign rest_weighted = site.projects | where_exp: "i", "i.featured != true and i.weight" | sort: 'weight' %}
-    {% assign rest_unweighted = site.projects | where_exp: "i", "i.featured != true and i.weight == nil" %}
+    {% comment %}Split in single-condition steps: Liquid 4.0.4, which GitHub Pages
+    still ships with Jekyll 3.10, cannot parse compound `and` inside where_exp.{% endcomment %}
+    {% assign not_featured = site.projects | where_exp: "i", "i.featured != true" %}
+    {% assign rest_weighted = not_featured | where_exp: "i", "i.weight" | sort: 'weight' %}
+    {% assign rest_unweighted = not_featured | where_exp: "i", "i.weight == nil" %}
     {% assign rest = rest_weighted | concat: rest_unweighted %}
 
     <div class="featured-grid">
