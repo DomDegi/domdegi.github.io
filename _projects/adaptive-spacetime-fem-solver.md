@@ -3,7 +3,8 @@ layout: page
 title: Adaptive Space-Time Finite Element Solver
 description: A distributed parallel implementation of a Space-Time Adaptive Finite Element Method (FEM) solver in C++ using deal.II and MPI.
 tags: [C++, MPI, deal.II, FEM, HPC, Parallel Computing]
-weight: 1
+featured: true
+weight: 3
 ---
 
 # Adaptive Space-Time Finite Element Solver

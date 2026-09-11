@@ -16,6 +16,10 @@ permalink: /
           Born in 2004 in Calabria, Southern Italy. I study High Performance Computing at Politecnico di Milano,
           and I build things where mathematics meets fast, scalable code.
         </p>
+        <p class="hero-seeking">
+          <strong>Currently looking for</strong> roles in Software Engineering, AI&nbsp;/&nbsp;ML, Research and
+          Quantitative Research.
+        </p>
         <div class="hero-actions">
           <a href="#projects" class="btn btn--primary">View Projects</a>
           <a href="#cv" class="btn">Read CV</a>
@@ -52,7 +56,6 @@ permalink: /
     </div>
   </div>
 </section>
-
 <!-- ============================ PROJECTS ============================ -->
 <section class="section section--plain" id="projects">
   <div class="wrapper">
@@ -63,12 +66,16 @@ permalink: /
       write-up.
     </p>
 
-    <div class="project-grid">
-      {% assign weighted = site.projects | where_exp: "item", "item.weight" | sort: 'weight' %}
-      {% assign unweighted = site.projects | where_exp: "item", "item.weight == nil" %}
-      {% assign sorted_projects = weighted | concat: unweighted %}
-      {% for project in sorted_projects %}
-      <a href="{{ project.url | relative_url }}" class="project-card">
+    {% comment %}Featured first: set `featured: true` in a project's front matter to
+    promote it, and `weight` to order it within its group.{% endcomment %}
+    {% assign featured = site.projects | where: "featured", true | sort: 'weight' %}
+    {% assign rest_weighted = site.projects | where_exp: "i", "i.featured != true and i.weight" | sort: 'weight' %}
+    {% assign rest_unweighted = site.projects | where_exp: "i", "i.featured != true and i.weight == nil" %}
+    {% assign rest = rest_weighted | concat: rest_unweighted %}
+
+    <div class="featured-grid">
+      {% for project in featured %}
+      <a href="{{ project.url | relative_url }}" class="project-card project-card--featured">
         <div class="project-card__body">
           <h3 class="project-card__title">{{ project.title }}</h3>
           <p class="project-card__desc">{{ project.description }}</p>
@@ -77,6 +84,21 @@ permalink: /
           </div>
         </div>
         <div class="project-card__footer">Read more &rarr;</div>
+      </a>
+      {% endfor %}
+    </div>
+
+    <h3 class="subsection-title">Everything else</h3>
+    <div class="project-grid project-grid--compact">
+      {% for project in rest %}
+      <a href="{{ project.url | relative_url }}" class="project-card project-card--compact">
+        <div class="project-card__body">
+          <h3 class="project-card__title">{{ project.title }}</h3>
+          <p class="project-card__desc">{{ project.description }}</p>
+          <div class="project-card__tags">
+            {% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+        </div>
       </a>
       {% endfor %}
     </div>
@@ -166,25 +188,12 @@ permalink: /
 </section>
 
 <!-- ============================ CV ============================ -->
-<section class="section section--plain" id="cv">
+<section class="section section--compact section--alt" id="cv">
   <div class="wrapper wrapper--narrow">
-    <span class="eyebrow">Resume</span>
-    <h2 class="section-title">Curriculum Vitae</h2>
-    <p class="section-lede">The complete overview of my education, academic projects and technical skills —
-      formatted for printing and Applicant Tracking Systems.</p>
-
-    <div class="cv-panel">
-      <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none"
-        stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-        <polyline points="14 2 14 8 20 8"></polyline>
-        <line x1="16" y1="13" x2="8" y2="13"></line>
-        <line x1="16" y1="17" x2="8" y2="17"></line>
-        <polyline points="10 9 9 9 8 9"></polyline>
-      </svg>
-      <div>
-        <h3>Official Resume</h3>
-        <p>Domenico De Giorgio — BSc in Computer Engineering, MSc candidate in HPC at Politecnico di Milano.</p>
+    <div class="cv-bar">
+      <div class="cv-bar__text">
+        <h2 class="cv-bar__title">Curriculum Vitae</h2>
+        <p>Full education, projects and technical skills — formatted for printing and ATS.</p>
       </div>
       <a href="{{ '/assets/docs/cv_domenico_degiorgio.pdf' | relative_url }}" target="_blank" rel="noopener"
         class="btn btn--primary">
@@ -194,7 +203,7 @@ permalink: /
           <polyline points="7 10 12 15 17 10"></polyline>
           <line x1="12" y1="15" x2="12" y2="3"></line>
         </svg>
-        Download PDF CV
+        Download PDF
       </a>
     </div>
   </div>
