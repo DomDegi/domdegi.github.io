@@ -3,7 +3,6 @@ layout: page
 title: Galaxy Trucker Multiplayer Digital Adaptation
 description: A Java-based client-server digital board game utilizing the MVC pattern, RMI/Sockets, and JavaFX.
 tags: [Java, MVC, Networking, JavaFX, Maven, JUnit5]
-featured: true
 weight: 2
 ---
 

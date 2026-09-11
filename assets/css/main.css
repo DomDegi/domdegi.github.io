@@ -604,16 +604,6 @@ img {
   padding: 2.75rem 0;
 }
 
-.subsection-title {
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  margin: 3.5rem 0 1.5rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 2px dotted var(--border-soft);
-}
-
 /* Featured projects: three cards with the full treatment. */
 .featured-grid {
   display: grid;
@@ -671,6 +661,62 @@ img {
   font-size: 0.68rem;
 }
 
+
+/* Collapsible "everything else" list */
+.more-projects {
+  margin-top: 3rem;
+}
+
+.more-projects__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  background: var(--card-bg);
+  border: var(--border-w) solid var(--ink);
+  border-radius: var(--radius);
+  padding: 0.85rem 1.25rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Safari/Chrome still paint a marker without this. */
+.more-projects__toggle::-webkit-details-marker {
+  display: none;
+}
+
+.more-projects__toggle:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow);
+}
+
+.more-projects__label {
+  font-size: 1rem;
+}
+
+.more-projects__count {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-right: auto;
+}
+
+.more-projects__chevron {
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  transition: transform 0.2s ease;
+}
+
+.more-projects[open] .more-projects__chevron {
+  transform: rotate(180deg);
+}
+
+.more-projects[open] .more-projects__toggle {
+  margin-bottom: 1.75rem;
+}
 /* CV strip */
 .cv-bar {
   display: flex;

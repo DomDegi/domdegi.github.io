@@ -44,9 +44,8 @@ permalink: /
       </div>
       <div class="about-card about-card--2">
         <h3>Interests</h3>
-        <p>Bridging advanced mathematical theories with scalable software through <strong>Scientific
-            Computing</strong>, <strong>Mathematical Modeling</strong>, <strong>Software Engineering</strong> and
-          <strong>Statistics</strong>.</p>
+        <p>Quantum physics (at least trying), using mathematics and statistics to model
+          <strong>finance</strong>, and currently learning <strong>Bayesian statistics</strong>.</p>
       </div>
       <div class="about-card about-card--3">
         <h3>Future Prospects</h3>
@@ -91,20 +90,32 @@ permalink: /
       {% endfor %}
     </div>
 
-    <h3 class="subsection-title">Everything else</h3>
-    <div class="project-grid project-grid--compact">
-      {% for project in rest %}
-      <a href="{{ project.url | relative_url }}" class="project-card project-card--compact">
-        <div class="project-card__body">
-          <h3 class="project-card__title">{{ project.title }}</h3>
-          <p class="project-card__desc">{{ project.description }}</p>
-          <div class="project-card__tags">
-            {% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+    {% comment %}Collapsed by default: native <details> so it still works without JS.{% endcomment %}
+    <details class="more-projects">
+      <summary class="more-projects__toggle">
+        <span class="more-projects__label">Everything else</span>
+        <span class="more-projects__count">{{ rest | size }} more projects</span>
+        <span class="more-projects__chevron" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </summary>
+      <div class="project-grid project-grid--compact">
+        {% for project in rest %}
+        <a href="{{ project.url | relative_url }}" class="project-card project-card--compact">
+          <div class="project-card__body">
+            <h3 class="project-card__title">{{ project.title }}</h3>
+            <p class="project-card__desc">{{ project.description }}</p>
+            <div class="project-card__tags">
+              {% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+            </div>
           </div>
-        </div>
-      </a>
-      {% endfor %}
-    </div>
+        </a>
+        {% endfor %}
+      </div>
+    </details>
   </div>
 </section>
 
@@ -149,6 +160,7 @@ permalink: /
         <h3>Software Engineering &amp; Tools</h3>
         <ul>
           <li>Version control (Git), UML, Agile methodologies</li>
+          <li><strong>CI/CD &amp; DevOps:</strong> GitHub Actions, Docker, automated testing and releases</li>
           <li><strong>Databases:</strong> SQL, ER modeling, DAO pattern</li>
           <li><strong>Profiling:</strong> Valgrind, KCachegrind, Perf</li>
         </ul>
