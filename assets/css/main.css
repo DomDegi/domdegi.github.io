@@ -26,6 +26,10 @@
   --header-bg: rgba(176, 224, 230, 0.92);
   --radius: 10px;
   --border-w: 2px;
+  --header-hn: 88;
+  --strip-hn: 20;
+  --header-h: calc(var(--header-hn) * 1px);
+  --strip-h: calc(var(--strip-hn) * 1px);
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -164,45 +168,46 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--header-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  height: var(--header-h);
+  background: transparent;
   border-bottom: var(--border-w) solid var(--ink);
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition: border-color 0.3s ease;
 }
 
-/* At the very top of the page the bar recedes to a thin accent strip and the
-   nav sits straight on the page; it fills in as soon as you scroll. The solid
-   state is the default so the bar still works with JS disabled. */
+/* The band is a layer that fills the whole bar and is scaled down from its top
+   edge while the page is at the top, so scrolling makes the colour grow
+   downwards out of the top edge and slide in behind the nav — rather than
+   fading a translucent background in. */
 .site-header::before {
   content: "";
   position: absolute;
-  inset: 0 0 auto 0;
-  height: 5px;
+  inset: 0;
+  z-index: 0;
   background: var(--band);
-  opacity: 0;
-  transition: opacity 0.25s ease;
+  transform-origin: top center;
+  transform: scaleY(1);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-header.at-top {
-  background: transparent;
   border-bottom-color: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
 }
 
 .site-header.at-top::before {
-  opacity: 1;
+  transform: scaleY(calc(var(--strip-hn) / var(--header-hn)));
 }
 
 .nav-container {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  height: 100%;
   max-width: 1040px;
   margin: 0 auto;
-  padding: 0.75rem 24px;
+  padding: 0 24px;
 }
 
 .nav-mark {
@@ -244,17 +249,22 @@ img {
   color: var(--on-band);
   white-space: nowrap;
   padding-bottom: 2px;
-  background-image: linear-gradient(var(--accent-3), var(--accent-3));
+  background-image: linear-gradient(var(--band), var(--band));
   background-repeat: no-repeat;
   background-position: 0 100%;
-  background-size: 0% 4px;
-  transition: background-size 0.2s ease;
+  background-size: 100% 5px;
+  transition: background-size 0.2s ease, background-image 0.3s ease;
+}
+
+/* Once the bar itself is the band colour the underline would vanish into it. */
+.site-header:not(.at-top) .nav-links a {
+  background-image: linear-gradient(var(--accent-3), var(--accent-3));
 }
 
 .nav-links a:hover,
 .nav-links a.is-active {
   text-decoration: none;
-  background-size: 100% 4px;
+  background-size: 100% 9px;
 }
 
 .nav-right {
@@ -327,7 +337,7 @@ img {
    ========================================================================== */
 .section {
   padding: 5rem 0;
-  scroll-margin-top: 70px;
+  scroll-margin-top: calc(var(--header-h) + 8px);
   border-bottom: var(--border-w) solid var(--ink);
 }
 
@@ -597,16 +607,17 @@ img {
 
 .hero-seeking {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.65;
+  text-align: center;
   color: var(--text);
   background: var(--bg-alt);
   border: var(--border-w) solid var(--ink);
-  border-left: 8px solid var(--accent-2);
-  border-radius: 8px;
-  padding: 0.7rem 1rem;
-  margin-bottom: 1.75rem;
-  max-width: 54ch;
+  border-top: 8px solid var(--accent-2);
+  border-radius: 10px;
+  padding: 1.15rem 1.6rem;
+  margin: 0 auto 1.75rem;
+  max-width: 46ch;
 }
 
 .section--compact {
@@ -1034,8 +1045,13 @@ img {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --header-hn: 64;
+    --strip-hn: 14;
+  }
+
   .nav-container {
-    padding: 0.6rem 16px;
+    padding: 0 16px;
     gap: 0.75rem;
   }
 
