@@ -80,6 +80,8 @@ The palette is white + a pastel blue band with five rotating accents, defined as
 
 `assets/js/site.js` (loaded on every page) only syncs the `.at-top` header class; `assets/js/home.js` (loaded on `/` only) is the nav scrollspy. There is no inline script in `<head>`.
 
+The "everything else" list slides open in **pure CSS**, via `::details-content` plus `interpolate-size: allow-keywords` on `:root` — don't reach for JS to animate it. Browsers missing either feature get the old instant open. The `overflow: hidden` that the animation needs would clip the cards' hover shadow, which is why `.more-projects .project-grid--compact` carries 8px of padding cancelled by an 8px negative margin.
+
 **The `<head>` is mostly `{% seo %}`.** `jekyll-seo-tag` emits the `<title>`, description, canonical, Open Graph, Twitter and JSON-LD tags from `_config.yml` — never hand-write those in `default.html` or they are emitted twice. Two config details are load-bearing: the social card is set through `defaults` because seo-tag reads `page.image`, not a site-level `image` key; and there is deliberately no `twitter:` block, because seo-tag would then emit an empty `twitter:site` and a nonsense `twitter:creator` built from `site.author`.
 
 **Fonts are self-hosted** in `assets/fonts/` — one variable woff2 per family covering every weight, latin and latin-ext subsets, under the OFL (`assets/fonts/LICENSE.txt`). There is no Google Fonts request. If a family or weight changes, the `@font-face` block at the top of `main.css` and the two `<link rel="preload">` tags in `default.html` both need updating.

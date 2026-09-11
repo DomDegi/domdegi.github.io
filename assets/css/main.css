@@ -45,6 +45,8 @@
    ========================================================================== */
 :root {
   color-scheme: light;
+  /* Lets `block-size: auto` animate, which the "everything else" list needs. */
+  interpolate-size: allow-keywords;
   --bg: #ffffff;
   --bg-alt: #f3fafc;
   --band: #6387fd;
@@ -760,9 +762,36 @@ img {
   transform: rotate(180deg);
 }
 
-.more-projects[open] .more-projects__toggle {
-  margin-bottom: 1.75rem;
+/* The list slides open instead of appearing all at once. ::details-content is
+   the box <details> wraps everything-but-the-summary in, so this animates the
+   native element with no JS and no wrapper div; `interpolate-size` above is
+   what makes `block-size: auto` interpolable. Browsers without either feature
+   fall back to the instant open, which is the behaviour this replaced.
+   The global prefers-reduced-motion rule already kills the transition. */
+.more-projects::details-content {
+  box-sizing: border-box;
+  block-size: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    block-size 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.3s ease 0.05s,
+    content-visibility 0.4s allow-discrete;
 }
+
+.more-projects[open]::details-content {
+  block-size: auto;
+  opacity: 1;
+}
+
+/* `overflow: hidden` above clips at the content box, which would cut the cards'
+   hover shadow off. Inset the grid inside its own padding by the shadow's reach
+   and pull the outer edges back out, so the cards sit exactly where they did. */
+.more-projects .project-grid--compact {
+  padding: 1.75rem 8px 8px;
+  margin: 0 -8px -8px;
+}
+
 /* CV strip */
 .cv-bar {
   display: flex;
