@@ -157,12 +157,6 @@ img {
   top: 8px;
 }
 
-.empty-state {
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  margin-top: 2rem;
-}
-
 /* ==========================================================================
    Header / anchor nav
    ========================================================================== */
@@ -484,35 +478,6 @@ img {
 /* ==========================================================================
    Project cards
    ========================================================================== */
-.filter-controls {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
-}
-
-.filter-btn {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.35rem 0.9rem;
-  border: var(--border-w) solid var(--ink);
-  border-radius: 999px;
-  background: var(--card-bg);
-  color: var(--text);
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
-}
-
-.filter-btn:hover {
-  transform: translateY(-2px);
-}
-
-.filter-btn.is-active {
-  background: var(--accent);
-  color: var(--on-accent);
-}
-
 .project-grid {
   display: grid;
   grid-template-columns: 1fr;

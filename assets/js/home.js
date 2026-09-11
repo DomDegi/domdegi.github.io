@@ -1,32 +1,6 @@
-// Behaviour specific to the single-page home: tag filtering + nav scrollspy.
+// Behaviour specific to the single-page home: nav scrollspy.
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* ---------- Project tag filter ---------- */
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.project-card');
-    const emptyState = document.querySelector('.empty-state');
-
-    buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            buttons.forEach(b => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
-
-            const filter = btn.dataset.filter;
-            let visible = 0;
-
-            cards.forEach(card => {
-                const tags = Array.from(card.querySelectorAll('.tag'))
-                    .map(t => t.textContent.trim().toLowerCase());
-                const show = filter === 'all' || tags.includes(filter);
-                card.hidden = !show;
-                if (show) visible++;
-            });
-
-            if (emptyState) emptyState.hidden = visible !== 0;
-        });
-    });
-
-    /* ---------- Nav scrollspy ---------- */
     const navLinks = Array.from(document.querySelectorAll('.nav-links a[data-nav]'));
     const sections = navLinks
         .map(link => document.getElementById(link.dataset.nav))

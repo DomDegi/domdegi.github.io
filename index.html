@@ -63,18 +63,6 @@ permalink: /
       write-up.
     </p>
 
-    <div class="filter-controls" role="group" aria-label="Filter projects by tag">
-      <button class="filter-btn is-active" data-filter="all">All</button>
-      {% assign all_tags = "" | split: "," %}
-      {% for project in site.projects %}{% for tag in project.tags %}{% assign all_tags = all_tags | push: tag %}{%
-      endfor %}{% endfor %}
-      {% assign unique_tags = all_tags | uniq | sort %}
-      {% comment %}Only tags shared by 2+ projects get a chip; the long tail of one-offs
-      would otherwise bury the filter row.{% endcomment %}
-      {% for tag in unique_tags %}{% assign tag_count = all_tags | where_exp: "t", "t == tag" | size %}{% if tag_count >
-      1 %}<button class="filter-btn" data-filter="{{ tag | downcase }}">{{ tag }}</button>{% endif %}{% endfor %}
-    </div>
-
     <div class="project-grid">
       {% assign weighted = site.projects | where_exp: "item", "item.weight" | sort: 'weight' %}
       {% assign unweighted = site.projects | where_exp: "item", "item.weight == nil" %}
@@ -92,7 +80,6 @@ permalink: /
       </a>
       {% endfor %}
     </div>
-    <p class="empty-state" hidden>No projects match that tag.</p>
   </div>
 </section>
 
