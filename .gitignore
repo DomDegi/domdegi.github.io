@@ -4,3 +4,11 @@ _site
 .jekyll-metadata
 vendor
 Gemfile.lock
+
+# LaTeX build artefacts (the CV PDF is produced by CI into assets/docs/)
+cv/*.aux
+cv/*.log
+cv/*.out
+cv/*.fls
+cv/*.fdb_latexmk
+cv/*.pdf

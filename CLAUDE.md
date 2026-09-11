@@ -49,7 +49,9 @@ The Gemfile must be excluded from that copy or Bundler tries to resolve `minima`
 
 ## Deployment
 
-Pushing to `main` is the deploy. There is no `.github/workflows/` — GitHub Pages runs its own default Jekyll build, which is why `Gemfile` pins `github-pages` rather than `jekyll` directly (the `gem "jekyll"` line is deliberately commented out). Only plugins on the GitHub Pages allowlist will work; `jekyll-feed` is the only one enabled.
+Pushing to `main` is the deploy. GitHub Pages runs its own default Jekyll build from the branch — the site is *not* built by a workflow, which is why `Gemfile` pins `github-pages` rather than `jekyll` directly (the `gem "jekyll"` line is deliberately commented out). Only plugins on the GitHub Pages allowlist will work; `jekyll-feed` is the only one enabled.
+
+The one workflow, `.github/workflows/build-cv.yml`, compiles `cv/cv.tex` and commits the resulting PDF to `assets/docs/cv_domenico_degiorgio.pdf`. It touches nothing else: keep it that way, because a workflow that deploys Pages would take the build away from the default one and change the deployment model for the whole site.
 
 ## Architecture
 
