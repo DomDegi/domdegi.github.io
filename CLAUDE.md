@@ -21,8 +21,10 @@ There is no test suite or linter — the only verification is rendering the site
 **Ruby is not installed on this machine** (NixOS, no `ruby`/`bundle` on PATH). To build or preview without installing a toolchain:
 
 ```bash
-nix-shell -p jekyll rubyPackages.jekyll-feed --run "jekyll build --destination /tmp/site"
-nix-shell -p jekyll rubyPackages.jekyll-feed --run "jekyll serve --port 4321"
+nix-shell -p jekyll rubyPackages.jekyll-feed rubyPackages.jekyll-seo-tag rubyPackages.jekyll-sitemap \
+  --run "jekyll build --destination /tmp/site"
+nix-shell -p jekyll rubyPackages.jekyll-feed rubyPackages.jekyll-seo-tag rubyPackages.jekyll-sitemap \
+  --run "jekyll serve --port 4321"
 nix-shell -p chromium --run "chromium --headless --no-sandbox --hide-scrollbars \
   --virtual-time-budget=4000 --window-size=1280,3400 --screenshot=/tmp/shot.png http://127.0.0.1:4321/"
 ```
@@ -35,7 +37,8 @@ One caveat when verifying this way: **IntersectionObserver never re-fires after 
 # does this commit actually build the way Pages will?
 rm -rf /tmp/j3src && mkdir -p /tmp/j3src
 tar -c --exclude=.git --exclude=Gemfile --exclude=.bundle --exclude=vendor . | tar -x -C /tmp/j3src
-(cd /tmp/j3src && nix-shell -p rubyPackages.jekyll rubyPackages.jekyll-feed rubyPackages.kramdown-parser-gfm \
+(cd /tmp/j3src && nix-shell -p rubyPackages.jekyll rubyPackages.jekyll-feed rubyPackages.jekyll-seo-tag \
+  rubyPackages.jekyll-sitemap rubyPackages.kramdown-parser-gfm \
   --run "unset BUNDLE_GEMFILE; JEKYLL_NO_BUNDLER_REQUIRE=true jekyll build --source /tmp/j3src --destination /tmp/j3site")
 
 # did the push actually deploy? compare the newest sha here against git rev-parse HEAD
@@ -47,9 +50,11 @@ The Gemfile must be excluded from that copy or Bundler tries to resolve `minima`
 
 `_config.yml` is *not* hot-reloaded — a change there needs the serve process restarted.
 
+`_config.yml` carries an `exclude:` list for `CLAUDE.md` and `README.md`. Without it Jekyll copies them straight through and they are served publicly at `/CLAUDE.md` and `/README.md` — anything added here is world-readable unless it is excluded.
+
 ## Deployment
 
-Pushing to `main` is the deploy. GitHub Pages runs its own default Jekyll build from the branch — the site is *not* built by a workflow, which is why `Gemfile` pins `github-pages` rather than `jekyll` directly (the `gem "jekyll"` line is deliberately commented out). Only plugins on the GitHub Pages allowlist will work; `jekyll-feed` is the only one enabled.
+Pushing to `main` is the deploy. GitHub Pages runs its own default Jekyll build from the branch — the site is *not* built by a workflow, which is why `Gemfile` pins `github-pages` rather than `jekyll` directly (the `gem "jekyll"` line is deliberately commented out). Only plugins on the GitHub Pages allowlist will work; three are enabled: `jekyll-feed`, `jekyll-seo-tag` and `jekyll-sitemap`.
 
 There is no `.github/workflows/` here, and adding one that deploys Pages would take the build away from the default one and change the deployment model for the whole site — don't.
 
@@ -63,24 +68,24 @@ There is no `.github/workflows/` here, and adding one that deploys Pages would t
 
 **Layouts:** `default.html` is the chrome (head/meta, sticky header, footer, scripts); `page.html` wraps it for project pages, adding a back-link to `/#projects`, the title, and the front-matter tags as chips. `home.js` is loaded only on `/`.
 
-**Projects are a Jekyll collection** (`collections.projects.output: true`). Each `_projects/*.md` has `title`, `description`, `tags: [...]` and an optional numeric `weight`. `index.html` splits the collection into weighted and unweighted sets, sorts the weighted ones and concatenates — lower `weight` first, unweighted last. Adding a project = adding one Markdown file.
+**Projects are a Jekyll collection** (`collections.projects.output: true`). Each `_projects/*.md` has `title`, `description`, `tags: [...]`, an optional `featured: true` and an optional numeric `weight`. `index.html` pulls the featured ones into a three-up `.featured-grid`, then puts everything else behind a collapsed native `<details>`; within each group `weight` sorts ascending and unweighted projects go last. Adding a project = adding one Markdown file.
 
-The tag-filter chips are derived from the collection, but **only tags used by 2+ projects get a chip** (there are ~43 distinct tags and the long tail would bury the row). Cards still display all their own tags, and `home.js` matches a chip's `data-filter` against the lowercased `.tag` text in each card.
+There is no tag filter any more — cards display their own tags as inert chips. The vestigial `[hidden] { display: none !important; }` rule near the top of the stylesheet is left over from it (the UA `[hidden]` rule loses to `.project-card { display: flex }`).
 
 Collection pages use the default permalink, so project URLs end in `.html` (`/projects/adaptive-spacetime-fem-solver.html`).
 
-**Styling** is `assets/css/main.css`, in two parts: hand-written rules (lines 1–~900) and a generated syntax-highlighting block at the end. Unlike the old version of this site, page content no longer carries inline `style=` attributes — everything is class-based, so a visual change belongs in the stylesheet.
+**Styling** is `assets/css/main.css`: a self-hosted `@font-face` block, then the hand-written rules, then a generated syntax-highlighting block at the end. Page content carries no inline `style=` attributes — everything is class-based (there are a few one-line utilities such as `.text-center` for the cases that used to be inline), so a visual change belongs in the stylesheet.
 
-The palette is white + powder blue with five rotating accents, defined as custom properties on `:root`, overridden under `[data-theme="dark"]`. **Light is the default.** Any new color must be added to both blocks. Two tokens exist specifically to survive the theme flip: `--footer-band` keeps the project-card footer light in dark mode (plain `--band` goes dark there), and `--on-band` / `--on-accent` carry the matching foreground.
+The palette is white + a pastel blue band with five rotating accents, defined as custom properties on `:root`. **The site is light-only** — the dark theme and its toggle were removed deliberately (the design did not hold up); `color-scheme: light` on `:root` keeps form controls and scrollbars light for visitors whose OS is dark. `--footer-band` and `--on-band` / `--on-accent` are holdovers from the two-theme era but are still the tokens the band and its foreground read from.
 
-`assets/js/theme.js` only wires the toggle; the saved theme is applied by an inline script in `<head>` so it never flashes.
+`assets/js/site.js` (loaded on every page) only syncs the `.at-top` header class; `assets/js/home.js` (loaded on `/` only) is the nav scrollspy. There is no inline script in `<head>`.
 
-A global `[hidden] { display: none !important; }` rule exists because the UA `[hidden]` rule loses to `.project-card { display: flex }` — without it the tag filter silently fails to hide anything.
+**The `<head>` is mostly `{% seo %}`.** `jekyll-seo-tag` emits the `<title>`, description, canonical, Open Graph, Twitter and JSON-LD tags from `_config.yml` — never hand-write those in `default.html` or they are emitted twice. Two config details are load-bearing: the social card is set through `defaults` because seo-tag reads `page.image`, not a site-level `image` key; and there is deliberately no `twitter:` block, because seo-tag would then emit an empty `twitter:site` and a nonsense `twitter:creator` built from `site.author`.
+
+**Fonts are self-hosted** in `assets/fonts/` — one variable woff2 per family covering every weight, latin and latin-ext subsets, under the OFL (`assets/fonts/LICENSE.txt`). There is no Google Fonts request. If a family or weight changes, the `@font-face` block at the top of `main.css` and the two `<link rel="preload">` tags in `default.html` both need updating.
 
 ## Known rough edges
 
-- `_pages/blog.markdown` declares `layout: home`, which does not exist (`theme: minima` is commented out), so the build prints a warning and `/blog/` renders unstyled. It is intentionally left in place and unlinked until there is something to publish; there is no `_posts/` directory yet.
-- `_projects/cnn-iamge-classification.md` has a typo in its filename ("iamge"), which is baked into its public URL.
-- `_projects/jekyll-portfolio-website.md` has a stray `weight: 999` appended *after* the body text instead of inside the front matter, so it has no effect.
-- Project write-ups contain LaTeX (`$...$`) but no MathJax/KaTeX is loaded, so it renders literally.
-- `site.title` is still "Dom's learning journal", which is what shows in the browser tab even though the site is now a portfolio.
+- Project write-ups contain LaTeX (`$...$`) but no MathJax/KaTeX is loaded, so it renders literally. Left as-is deliberately.
+- There is no blog. `_pages/blog.markdown` used to declare a non-existent `layout: home` and was served unstyled at `/blog/`; it was deleted rather than fixed, and `_pages/` is now empty (the `include: _pages` entry in `_config.yml` is kept so the directory works if it comes back).
+- `_projects/jekyll-portfolio-website.md` still describes the site as a hub for a "technical blog", which no longer exists.

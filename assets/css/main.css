@@ -1,11 +1,54 @@
 /* ==========================================================================
-   Palette — light is the default. Every token must exist in BOTH blocks.
+   Fonts — self-hosted variable woff2 (see assets/fonts/LICENSE.txt).
+   One file per family covers every weight; the browser fetches the latin-ext
+   subset only if the page actually uses a glyph from it.
+   ========================================================================== */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/inter-var-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/inter-var-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('../fonts/jetbrains-mono-var-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('../fonts/jetbrains-mono-var-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ==========================================================================
+   Palette — light only. The dark theme was removed deliberately; see git
+   history (commit b8c0db9 and earlier) if it is ever wanted back.
    ========================================================================== */
 :root {
+  color-scheme: light;
   --bg: #ffffff;
   --bg-alt: #f3fafc;
   --band: #6387fd;
-  /* powder blue */
+  /* pastel blue */
   --footer-band: #6387fd;
   --band-deep: #1e2a63;
   --ink: #12273a;
@@ -33,31 +76,6 @@
   --strip-h: calc(var(--strip-hn) * 1px);
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-}
-
-[data-theme="dark"] {
-  --bg: #0e1a24;
-  --bg-alt: #132532;
-  --band: #2f44a8;
-  --footer-band: #8299f5;
-  --band-deep: #121a3f;
-  --ink: #04090d;
-  --text: #e6f1f5;
-  --text-muted: #9ab0bd;
-  --border: #3c6579;
-  --border-soft: #23404f;
-  --card-bg: #162a38;
-  --accent: #6387fd;
-  --link: #8ba4ff;
-  --accent-2: #f59b7c;
-  --accent-3: #f2c14e;
-  --accent-4: #77d3a4;
-  --accent-5: #b3a4e6;
-  --on-band: #e6f1f5;
-  --on-accent: #0e1a24;
-  --shadow: 4px 4px 0 var(--ink);
-  --shadow-lg: 7px 7px 0 var(--ink);
-  --header-bg: rgba(29, 79, 99, 0.94);
 }
 
 /* ==========================================================================
@@ -128,6 +146,25 @@ img {
 [hidden] {
   display: none !important;
 }
+
+/* Small shared utilities — used in place of inline `style=` attributes. */
+.text-center {
+  text-align: center;
+}
+
+.section-lede--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error-code {
+  font-size: clamp(3rem, 12vw, 6rem);
+}
+
+.error-lede {
+  margin: 0 auto 2rem;
+}
+
 
 :focus-visible {
   outline: 3px solid var(--accent-2);
@@ -274,24 +311,6 @@ img {
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
-}
-
-.theme-toggle {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  background: var(--bg);
-  color: var(--on-band);
-  border: var(--border-w) solid var(--ink);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.theme-toggle:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 3px 3px 0 var(--ink);
 }
 
 /* ==========================================================================
@@ -1080,583 +1099,292 @@ img {
 }
 
 /* Syntax Highlighting */
-[data-theme="dark"] .highlight table td {
+.highlight table td {
   padding: 5px;
 }
 
-[data-theme="dark"] .highlight table pre {
+.highlight table pre {
   margin: 0;
 }
 
-[data-theme="dark"] .highlight .c,
-[data-theme="dark"] .highlight .ch,
-[data-theme="dark"] .highlight .cd,
-[data-theme="dark"] .highlight .cpf {
-  color: #75715e;
-  font-style: italic;
-}
-
-[data-theme="dark"] .highlight .cm {
-  color: #75715e;
-  font-style: italic;
-}
-
-[data-theme="dark"] .highlight .c1 {
-  color: #75715e;
-  font-style: italic;
-}
-
-[data-theme="dark"] .highlight .cp {
-  color: #75715e;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .cs {
-  color: #75715e;
-  font-weight: bold;
-  font-style: italic;
-}
-
-[data-theme="dark"] .highlight .err {
-  color: #960050;
-  background-color: #1e0010;
-}
-
-[data-theme="dark"] .highlight .gi {
-  color: #ffffff;
-  background-color: #324932;
-}
-
-[data-theme="dark"] .highlight .gd {
-  color: #ffffff;
-  background-color: #493131;
-}
-
-[data-theme="dark"] .highlight .ge {
-  color: #000000;
-  font-style: italic;
-}
-
-[data-theme="dark"] .highlight .gr {
-  color: #aa0000;
-}
-
-[data-theme="dark"] .highlight .gt {
-  color: #aa0000;
-}
-
-[data-theme="dark"] .highlight .gh {
-  color: #999999;
-}
-
-[data-theme="dark"] .highlight .go {
-  color: #888888;
-}
-
-[data-theme="dark"] .highlight .gp {
-  color: #555555;
-}
-
-[data-theme="dark"] .highlight .gs {
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .gu {
-  color: #aaaaaa;
-}
-
-[data-theme="dark"] .highlight .k,
-[data-theme="dark"] .highlight .kv {
-  color: #66d9ef;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .kc {
-  color: #66d9ef;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .kd {
-  color: #66d9ef;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .kp {
-  color: #66d9ef;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .kr {
-  color: #66d9ef;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .kt {
-  color: #66d9ef;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .kn {
-  color: #f92672;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .ow {
-  color: #f92672;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .o {
-  color: #f92672;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .mf {
-  color: #ae81ff;
-}
-
-[data-theme="dark"] .highlight .mh {
-  color: #ae81ff;
-}
-
-[data-theme="dark"] .highlight .il {
-  color: #ae81ff;
-}
-
-[data-theme="dark"] .highlight .mi {
-  color: #ae81ff;
-}
-
-[data-theme="dark"] .highlight .mo {
-  color: #ae81ff;
-}
-
-[data-theme="dark"] .highlight .m,
-[data-theme="dark"] .highlight .mb,
-[data-theme="dark"] .highlight .mx {
-  color: #ae81ff;
-}
-
-[data-theme="dark"] .highlight .se {
-  color: #ae81ff;
-}
-
-[data-theme="dark"] .highlight .sa {
-  color: #66d9ef;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .sb {
-  color: #e6db74;
-}
-
-[data-theme="dark"] .highlight .sc {
-  color: #e6db74;
-}
-
-[data-theme="dark"] .highlight .sd {
-  color: #e6db74;
-}
-
-[data-theme="dark"] .highlight .s2 {
-  color: #e6db74;
-}
-
-[data-theme="dark"] .highlight .sh {
-  color: #e6db74;
-}
-
-[data-theme="dark"] .highlight .si {
-  color: #e6db74;
-}
-
-[data-theme="dark"] .highlight .sx {
-  color: #e6db74;
-}
-
-[data-theme="dark"] .highlight .sr {
-  color: #e6db74;
-}
-
-[data-theme="dark"] .highlight .s1 {
-  color: #e6db74;
-}
-
-[data-theme="dark"] .highlight .ss {
-  color: #e6db74;
-}
-
-[data-theme="dark"] .highlight .s,
-[data-theme="dark"] .highlight .dl {
-  color: #e6db74;
-}
-
-[data-theme="dark"] .highlight .na {
-  color: #a6e22e;
-}
-
-[data-theme="dark"] .highlight .nc {
-  color: #a6e22e;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .nd {
-  color: #a6e22e;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .ne {
-  color: #a6e22e;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .nf,
-[data-theme="dark"] .highlight .fm {
-  color: #a6e22e;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .no {
-  color: #66d9ef;
-}
-
-[data-theme="dark"] .highlight .bp {
-  color: #f8f8f2;
-}
-
-[data-theme="dark"] .highlight .nb {
-  color: #f8f8f2;
-}
-
-[data-theme="dark"] .highlight .ni {
-  color: #f8f8f2;
-}
-
-[data-theme="dark"] .highlight .nn {
-  color: #f8f8f2;
-}
-
-[data-theme="dark"] .highlight .vc {
-  color: #f8f8f2;
-}
-
-[data-theme="dark"] .highlight .vg {
-  color: #f8f8f2;
-}
-
-[data-theme="dark"] .highlight .vi {
-  color: #f8f8f2;
-}
-
-[data-theme="dark"] .highlight .nv,
-[data-theme="dark"] .highlight .vm {
-  color: #f8f8f2;
-}
-
-[data-theme="dark"] .highlight .w {
-  color: #f8f8f2;
-}
-
-[data-theme="dark"] .highlight .nl {
-  color: #f8f8f2;
-  font-weight: bold;
-}
-
-[data-theme="dark"] .highlight .nt {
-  color: #f92672;
-}
-
-[data-theme="dark"] .highlight {
-  color: #f8f8f2;
-  background-color: #49483e;
-}
-
-[data-theme="light"] .highlight table td {
-  padding: 5px;
-}
-
-[data-theme="light"] .highlight table pre {
-  margin: 0;
-}
-
-[data-theme="light"] .highlight .cm {
+.highlight .cm {
   color: #999988;
   font-style: italic;
 }
 
-[data-theme="light"] .highlight .cp {
+.highlight .cp {
   color: #999999;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .c1 {
+.highlight .c1 {
   color: #999988;
   font-style: italic;
 }
 
-[data-theme="light"] .highlight .cs {
+.highlight .cs {
   color: #999999;
   font-weight: bold;
   font-style: italic;
 }
 
-[data-theme="light"] .highlight .c,
-[data-theme="light"] .highlight .ch,
-[data-theme="light"] .highlight .cd,
-[data-theme="light"] .highlight .cpf {
+.highlight .c,
+.highlight .ch,
+.highlight .cd,
+.highlight .cpf {
   color: #999988;
   font-style: italic;
 }
 
-[data-theme="light"] .highlight .err {
+.highlight .err {
   color: #a61717;
   background-color: #e3d2d2;
 }
 
-[data-theme="light"] .highlight .gd {
+.highlight .gd {
   color: #000000;
   background-color: #ffdddd;
 }
 
-[data-theme="light"] .highlight .ge {
+.highlight .ge {
   color: #000000;
   font-style: italic;
 }
 
-[data-theme="light"] .highlight .gr {
+.highlight .gr {
   color: #aa0000;
 }
 
-[data-theme="light"] .highlight .gh {
+.highlight .gh {
   color: #999999;
 }
 
-[data-theme="light"] .highlight .gi {
+.highlight .gi {
   color: #000000;
   background-color: #ddffdd;
 }
 
-[data-theme="light"] .highlight .go {
+.highlight .go {
   color: #888888;
 }
 
-[data-theme="light"] .highlight .gp {
+.highlight .gp {
   color: #555555;
 }
 
-[data-theme="light"] .highlight .gs {
+.highlight .gs {
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .gu {
+.highlight .gu {
   color: #aaaaaa;
 }
 
-[data-theme="light"] .highlight .gt {
+.highlight .gt {
   color: #aa0000;
 }
 
-[data-theme="light"] .highlight .kc {
+.highlight .kc {
   color: #000000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .kd {
+.highlight .kd {
   color: #000000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .kn {
+.highlight .kn {
   color: #000000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .kp {
+.highlight .kp {
   color: #000000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .kr {
+.highlight .kr {
   color: #000000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .kt {
+.highlight .kt {
   color: #445588;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .k,
-[data-theme="light"] .highlight .kv {
+.highlight .k,
+.highlight .kv {
   color: #000000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .mf {
+.highlight .mf {
   color: #009999;
 }
 
-[data-theme="light"] .highlight .mh {
+.highlight .mh {
   color: #009999;
 }
 
-[data-theme="light"] .highlight .il {
+.highlight .il {
   color: #009999;
 }
 
-[data-theme="light"] .highlight .mi {
+.highlight .mi {
   color: #009999;
 }
 
-[data-theme="light"] .highlight .mo {
+.highlight .mo {
   color: #009999;
 }
 
-[data-theme="light"] .highlight .m,
-[data-theme="light"] .highlight .mb,
-[data-theme="light"] .highlight .mx {
+.highlight .m,
+.highlight .mb,
+.highlight .mx {
   color: #009999;
 }
 
-[data-theme="light"] .highlight .sa {
+.highlight .sa {
   color: #000000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .sb {
+.highlight .sb {
   color: #d14;
 }
 
-[data-theme="light"] .highlight .sc {
+.highlight .sc {
   color: #d14;
 }
 
-[data-theme="light"] .highlight .sd {
+.highlight .sd {
   color: #d14;
 }
 
-[data-theme="light"] .highlight .s2 {
+.highlight .s2 {
   color: #d14;
 }
 
-[data-theme="light"] .highlight .se {
+.highlight .se {
   color: #d14;
 }
 
-[data-theme="light"] .highlight .sh {
+.highlight .sh {
   color: #d14;
 }
 
-[data-theme="light"] .highlight .si {
+.highlight .si {
   color: #d14;
 }
 
-[data-theme="light"] .highlight .sx {
+.highlight .sx {
   color: #d14;
 }
 
-[data-theme="light"] .highlight .sr {
+.highlight .sr {
   color: #009926;
 }
 
-[data-theme="light"] .highlight .s1 {
+.highlight .s1 {
   color: #d14;
 }
 
-[data-theme="light"] .highlight .ss {
+.highlight .ss {
   color: #990073;
 }
 
-[data-theme="light"] .highlight .s,
-[data-theme="light"] .highlight .dl {
+.highlight .s,
+.highlight .dl {
   color: #d14;
 }
 
-[data-theme="light"] .highlight .na {
+.highlight .na {
   color: #008080;
 }
 
-[data-theme="light"] .highlight .bp {
+.highlight .bp {
   color: #999999;
 }
 
-[data-theme="light"] .highlight .nb {
+.highlight .nb {
   color: #0086B3;
 }
 
-[data-theme="light"] .highlight .nc {
+.highlight .nc {
   color: #445588;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .no {
+.highlight .no {
   color: #008080;
 }
 
-[data-theme="light"] .highlight .nd {
+.highlight .nd {
   color: #3c5d5d;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .ni {
+.highlight .ni {
   color: #800080;
 }
 
-[data-theme="light"] .highlight .ne {
+.highlight .ne {
   color: #990000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .nf,
-[data-theme="light"] .highlight .fm {
+.highlight .nf,
+.highlight .fm {
   color: #990000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .nl {
+.highlight .nl {
   color: #990000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .nn {
+.highlight .nn {
   color: #555555;
 }
 
-[data-theme="light"] .highlight .nt {
+.highlight .nt {
   color: #000080;
 }
 
-[data-theme="light"] .highlight .vc {
+.highlight .vc {
   color: #008080;
 }
 
-[data-theme="light"] .highlight .vg {
+.highlight .vg {
   color: #008080;
 }
 
-[data-theme="light"] .highlight .vi {
+.highlight .vi {
   color: #008080;
 }
 
-[data-theme="light"] .highlight .nv,
-[data-theme="light"] .highlight .vm {
+.highlight .nv,
+.highlight .vm {
   color: #008080;
 }
 
-[data-theme="light"] .highlight .ow {
+.highlight .ow {
   color: #000000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .o {
+.highlight .o {
   color: #000000;
   font-weight: bold;
 }
 
-[data-theme="light"] .highlight .w {
+.highlight .w {
   color: #bbbbbb;
 }
 
-[data-theme="light"] .highlight {
+.highlight {
   background-color: #f8f8f8;
 }

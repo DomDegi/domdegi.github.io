@@ -1,34 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if page.title and page.url != '/' %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-    <meta name="description" content="{{ page.description | default: site.description }}">
 
-    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-    <meta property="og:description" content="{{ page.description | default: site.description }}" />
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="{{ '/assets/images/profile.jpg' | absolute_url }}" />
-    <meta name="twitter:card" content="summary" />
+    {% comment %}jekyll-seo-tag emits <title>, the description, canonical, Open
+    Graph, Twitter and JSON-LD from _config.yml and the page front matter.
+    Don't hand-write those tags here — they would be emitted twice.{% endcomment %}
+    {% seo %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap">
+    <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="alternate icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" sizes="32x32">
+    <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+
+    {% comment %}Fonts are self-hosted, so there is no third-party request to
+    preconnect to. Preload only the latin subsets — latin-ext is fetched on
+    demand via its unicode-range.{% endcomment %}
+    <link rel="preload" href="{{ '/assets/fonts/inter-var-latin.woff2' | relative_url }}" as="font"
+        type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/jetbrains-mono-var-latin.woff2' | relative_url }}" as="font"
+        type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-
-    <script>
-        // Applied before first paint so the saved theme never flashes.
-        (function () {
-            try {
-                var t = localStorage.getItem('theme');
-                if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
-            } catch (e) { }
-        })();
-    </script>
 </head>
 
 <body>
@@ -47,26 +40,6 @@
 
             <div class="nav-right">
                 <a href="{{ '/' | relative_url }}#contact" class="btn btn--sm contact-btn">Contact Me</a>
-                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" style="display: none;">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
             </div>
         </nav>
     </header>
@@ -123,7 +96,7 @@
         <p>&copy; {{ 'now' | date: "%Y" }} Domenico De Giorgio.</p>
     </footer>
 
-    <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/site.js' | relative_url }}"></script>
     {% if page.url == '/' %}<script src="{{ '/assets/js/home.js' | relative_url }}"></script>{% endif %}
 </body>
 

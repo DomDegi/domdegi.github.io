@@ -17,16 +17,29 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-
-title: Dom's learning journal
+title: Domenico De Giorgio
+tagline: Computer Engineering & HPC
+author: Domenico De Giorgio
 email: domenicodegiorgio@icloud.com
 description: >-
-  A journal to document my learning progress during my studies at my MSc in High Performance Computing  at Polimi.
+  Portfolio of Domenico De Giorgio — BSc in Computer Engineering and MSc candidate in
+  High Performance Computing at Politecnico di Milano. Projects in scientific computing,
+  numerical methods, parallel programming and machine learning.
 baseurl: ""     # lascia vuoto per user/organization site
 url: "https://domdegi.github.io"
 github_username:  DomDegi
 linkedin_username:  domenicodegiorgio
 instagram_username:  domenico.degiorgio_
+
+# jekyll-seo-tag reads the social card from `page.image`, not a site-level key,
+# so it is applied to every page through `defaults` below. `social.links`
+# becomes sameAs in the JSON-LD person block.
+social:
+  name: Domenico De Giorgio
+  links:
+    - https://github.com/DomDegi
+    - https://www.linkedin.com/in/domenicodegiorgio
+    - https://www.instagram.com/domenico.degiorgio_
 
 nav_links:
   - name: Projects
@@ -39,6 +52,8 @@ nav_links:
 # Build settings
 # theme: minima
 plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
   - jekyll-feed
 
 # Exclude from processing.
@@ -48,6 +63,12 @@ plugins:
 
 include:
   - _pages
+
+# Additive to Jekyll's built-in exclude list. These are repo docs, not pages —
+# without this they are served at /CLAUDE.md and /README.md.
+exclude:
+  - CLAUDE.md
+  - README.md
 
 #
 # Excluded items can be processed by explicitly listing the directories or
@@ -68,3 +89,16 @@ include:
 collections:
   projects:
     output: true
+
+# Gives every page the 1200x630 social card. jekyll-seo-tag turns an image with
+# width/height/alt into og:image + twitter:image and their metadata, and switches
+# twitter:card to summary_large_image on its own once an image is present.
+defaults:
+  - scope:
+      path: ""
+    values:
+      image:
+        path: /assets/images/social-card.png
+        width: 1200
+        height: 630
+        alt: "Domenico De Giorgio — MSc candidate in High Performance Computing at Politecnico di Milano"
