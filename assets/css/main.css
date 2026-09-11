@@ -4,9 +4,9 @@
 :root {
   --bg: #ffffff;
   --bg-alt: #f3fafc;
-  --band: #b0e0e6;
+  --band: #6387fd;
   /* powder blue */
-  --footer-band: #b0e0e6;
+  --footer-band: #6387fd;
   --band-deep: #17394d;
   --ink: #12273a;
   --text: #12273a;
@@ -14,7 +14,7 @@
   --border: #12273a;
   --border-soft: #cfe3ea;
   --card-bg: #ffffff;
-  --accent: #14256e;
+  --accent: #1c7ea8;
   --accent-2: #ef7d57;
   --accent-3: #f2c14e;
   --accent-4: #5bbf8a;
@@ -37,8 +37,8 @@
 [data-theme="dark"] {
   --bg: #0e1a24;
   --bg-alt: #132532;
-  --band: #1d4f63;
-  --footer-band: #9ad4e2;
+  --band: #2f44a8;
+  --footer-band: #8299f5;
   --band-deep: #0a141c;
   --ink: #04090d;
   --text: #e6f1f5;
@@ -46,7 +46,7 @@
   --border: #3c6579;
   --border-soft: #23404f;
   --card-bg: #162a38;
-  --accent: #93a9f0;
+  --accent: #79cde8;
   --accent-2: #f59b7c;
   --accent-3: #f2c14e;
   --accent-4: #77d3a4;
@@ -379,6 +379,11 @@ img {
 
 .section--deep .section-lede {
   color: #b9d4de;
+}
+
+/* The band is saturated enough that the muted grey fails against it. */
+.section--band .section-lede {
+  color: var(--on-band);
 }
 
 .eyebrow {
