@@ -2,10 +2,16 @@
 layout: default
 ---
 <article class="page">
-    <header class="page-header">
+    <div class="wrapper wrapper--narrow">
+        <a href="{{ '/' | relative_url }}#projects" class="back-link">&larr; Back to all projects</a>
         <h1 class="page-title">{{ page.title }}</h1>
-    </header>
-    <div class="page-content">
-        {{ content }}
+        {% if page.tags %}
+        <div class="page-meta">
+            {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+        </div>
+        {% endif %}
+        <div class="page-body">
+            {{ content }}
+        </div>
     </div>
 </article>

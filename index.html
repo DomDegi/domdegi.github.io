@@ -1,0 +1,261 @@
+---
+layout: default
+title: Home
+permalink: /
+---
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="home">
+  <div class="wrapper">
+    <div class="hero-inner">
+      <img src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Domenico De Giorgio" class="hero-profile"
+        width="260" height="260" fetchpriority="high" decoding="async" />
+      <div>
+        <h1 class="hero-title">Hey, I'm <span class="accent">Domenico.</span></h1>
+        <p class="hero-subtitle">
+          Born in 2004 in Calabria, Southern Italy. I study High Performance Computing at Politecnico di Milano,
+          and I build things where mathematics meets fast, scalable code.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn--primary">View Projects</a>
+          <a href="#cv" class="btn">Read CV</a>
+          <a href="#contact" class="btn btn--accent">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ABOUT ============================ -->
+<section class="section section--alt" id="about">
+  <div class="wrapper">
+    <span class="eyebrow">About</span>
+    <h2 class="section-title">A bit of background</h2>
+    <p class="section-lede">Where I come from academically, what I care about, and where I'm heading.</p>
+    <div class="about-grid">
+      <div class="about-card about-card--1">
+        <h3>Education</h3>
+        <p>BSc in Computer Engineering and MSc candidate in <strong>High Performance Computing</strong> at Politecnico
+          di Milano.</p>
+      </div>
+      <div class="about-card about-card--2">
+        <h3>Interests</h3>
+        <p>Bridging advanced mathematical theories with scalable software through <strong>Scientific
+            Computing</strong>, <strong>Mathematical Modeling</strong>, <strong>Software Engineering</strong> and
+          <strong>Statistics</strong>.</p>
+      </div>
+      <div class="about-card about-card--3">
+        <h3>Future Prospects</h3>
+        <p>Expanding my expertise in scientific computing and the mathematical modelling of current problems in
+          physics and engineering.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROJECTS ============================ -->
+<section class="section section--plain" id="projects">
+  <div class="wrapper">
+    <span class="eyebrow">Work</span>
+    <h2 class="section-title">My Projects</h2>
+    <p class="section-lede">
+      A selection of academic work, personal projects and open source contributions. Click any card for the full
+      write-up.
+    </p>
+
+    <div class="filter-controls" role="group" aria-label="Filter projects by tag">
+      <button class="filter-btn is-active" data-filter="all">All</button>
+      {% assign all_tags = "" | split: "," %}
+      {% for project in site.projects %}{% for tag in project.tags %}{% assign all_tags = all_tags | push: tag %}{%
+      endfor %}{% endfor %}
+      {% assign unique_tags = all_tags | uniq | sort %}
+      {% comment %}Only tags shared by 2+ projects get a chip; the long tail of one-offs
+      would otherwise bury the filter row.{% endcomment %}
+      {% for tag in unique_tags %}{% assign tag_count = all_tags | where_exp: "t", "t == tag" | size %}{% if tag_count >
+      1 %}<button class="filter-btn" data-filter="{{ tag | downcase }}">{{ tag }}</button>{% endif %}{% endfor %}
+    </div>
+
+    <div class="project-grid">
+      {% assign weighted = site.projects | where_exp: "item", "item.weight" | sort: 'weight' %}
+      {% assign unweighted = site.projects | where_exp: "item", "item.weight == nil" %}
+      {% assign sorted_projects = weighted | concat: unweighted %}
+      {% for project in sorted_projects %}
+      <a href="{{ project.url | relative_url }}" class="project-card">
+        <div class="project-card__body">
+          <h3 class="project-card__title">{{ project.title }}</h3>
+          <p class="project-card__desc">{{ project.description }}</p>
+          <div class="project-card__tags">
+            {% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+        </div>
+        <div class="project-card__footer">Read more &rarr;</div>
+      </a>
+      {% endfor %}
+    </div>
+    <p class="empty-state" hidden>No projects match that tag.</p>
+  </div>
+</section>
+
+<!-- ============================ SKILLS ============================ -->
+<section class="section section--band" id="skills">
+  <div class="wrapper">
+    <span class="eyebrow">Toolbox</span>
+    <h2 class="section-title">Technical Skills</h2>
+    <p class="section-lede">From low-level systems programming to advanced numerical analysis.</p>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>HPC &amp; Numerical Methods</h3>
+        <ul>
+          <li><strong>Parallel Computing:</strong> MPI, OpenMP, CUDA</li>
+          <li><strong>Mathematical Modeling:</strong> Finite Element Method for PDEs, Numerical Analysis, Operations
+            Research</li>
+          <li><strong>Numerical Libraries:</strong> Eigen, deal.II, Trilinos</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <h3>AI &amp; Machine Learning</h3>
+        <ul>
+          <li><strong>Frameworks:</strong> PyTorch</li>
+          <li><strong>Architectures:</strong> CNNs, RNNs (LSTM, GRU, biGRU), Vision Transformers</li>
+          <li><strong>Tooling:</strong> CatBoost, Optuna, data augmentation</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <h3>Programming Languages</h3>
+        <ul>
+          <li><strong>Advanced:</strong> C, Java</li>
+          <li><strong>Proficient:</strong> C++, Python</li>
+          <li><strong>Familiar:</strong> HTML, CSS, JavaScript (AJAX/RIA), MATLAB, VHDL</li>
+          <li><strong>Learning:</strong> R</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <h3>Software Engineering &amp; Tools</h3>
+        <ul>
+          <li>Version control (Git), UML, Agile methodologies</li>
+          <li><strong>Databases:</strong> SQL, ER modeling, DAO pattern</li>
+          <li><strong>Profiling:</strong> Valgrind, KCachegrind, Perf</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <h3>Systems &amp; Architecture</h3>
+        <ul>
+          <li>Computer architecture and memory management</li>
+          <li>Operating systems fundamentals</li>
+          <li>GPU architectures</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <h3>Physics &amp; Mathematics</h3>
+        <ul>
+          <li><strong>Physics:</strong> classical mechanics, thermodynamics, quantum physics &amp; mechanics</li>
+          <li><strong>Mathematics:</strong> advanced calculus, linear algebra</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <h3>Electronics &amp; Control Systems</h3>
+        <ul>
+          <li>Circuit analysis, digital logic design</li>
+          <li>System modeling, PID controller design</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <h3>Spoken Languages</h3>
+        <ul>
+          <li><strong>Italian:</strong> native</li>
+          <li><strong>English:</strong> TOEIC Listening &amp; Reading — C1 (985/990)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CV ============================ -->
+<section class="section section--plain" id="cv">
+  <div class="wrapper wrapper--narrow">
+    <span class="eyebrow">Resume</span>
+    <h2 class="section-title">Curriculum Vitae</h2>
+    <p class="section-lede">The complete overview of my education, academic projects and technical skills —
+      formatted for printing and Applicant Tracking Systems.</p>
+
+    <div class="cv-panel">
+      <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none"
+        stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+        <polyline points="10 9 9 9 8 9"></polyline>
+      </svg>
+      <div>
+        <h3>Official Resume</h3>
+        <p>Domenico De Giorgio — BSc in Computer Engineering, MSc candidate in HPC at Politecnico di Milano.</p>
+      </div>
+      <a href="{{ '/assets/docs/cv_domenico_degiorgio.pdf' | relative_url }}" target="_blank" rel="noopener"
+        class="btn btn--primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Download PDF CV
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ============================ -->
+<section class="section section--deep" id="contact">
+  <div class="wrapper wrapper--narrow" style="text-align: center;">
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="section-lede" style="margin-left: auto; margin-right: auto;">
+      Happy to talk about scientific computing, HPC, or anything on this page.
+    </p>
+    <div class="contact-list">
+      <a href="mailto:{{ site.email }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        {{ site.email }}
+      </a>
+      <a href="tel:+393891766712">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+          </path>
+        </svg>
+        +39 389 176 6712
+      </a>
+      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+          </path>
+        </svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>

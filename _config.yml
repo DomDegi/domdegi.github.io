@@ -28,12 +28,13 @@ github_username:  DomDegi
 linkedin_username:  domenicodegiorgio
 instagram_username:  domenico.degiorgio_
 
-header_pages:
-  - index.markdown
-  - _pages/projects.markdown
-  - _pages/skills.markdown
-  - _pages/cv.markdown
-  - _pages/blog.markdown
+nav_links:
+  - name: Projects
+    anchor: "#projects"
+  - name: Skills
+    anchor: "#skills"
+  - name: CV
+    anchor: "#cv"
 
 # Build settings
 # theme: minima

@@ -1,71 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <title>{% if page.title and page.url != '/' %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="description" content="{{ page.description | default: site.description }}">
 
     <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
     <meta property="og:description" content="{{ page.description | default: site.description }}" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="{{ '/assets/images/profile-placeholder.jpg' | absolute_url }}" />
+    <meta property="og:image" content="{{ '/assets/images/profile.jpg' | absolute_url }}" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        // Applied before first paint so the saved theme never flashes.
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header">
-        <nav class="nav-container">
-            <a href="{{ '/' | relative_url }}" class="site-title">
-                <span class="desktop-title">{{ site.title }}</span>
-                <span class="mobile-title">Dom</span>
-            </a>
+        <nav class="nav-container" aria-label="Primary">
+            <a href="{{ '/' | relative_url }}" class="nav-mark" aria-label="Home">DD</a>
+
             <div class="nav-links">
-                {% for path in site.header_pages %}
-                {% assign my_page = site.pages | where: "path", path | first %}
-                {% if my_page.title %}
-                <a href="{{ my_page.url | relative_url }}" {% if page.url==my_page.url %}class="active" {% endif %}>{{
-                    my_page.title }}</a>
-                {% endif %}
+                {% for item in site.nav_links %}
+                <a href="{{ '/' | relative_url }}{{ item.anchor }}" data-nav="{{ item.anchor | remove: '#' }}">{{
+                    item.name }}</a>
                 {% endfor %}
             </div>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    style="display: none;">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-            </button>
+
+            <div class="nav-right">
+                <a href="{{ '/' | relative_url }}#contact" class="btn btn--sm contact-btn">Contact Me</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="display: none;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
         </nav>
     </header>
 
-    <main class="page-content" aria-label="Content">
-        <div class="wrapper">
-            {{ content }}
-        </div>
+    <main id="main">
+        {{ content }}
     </main>
 
     <footer class="site-footer">
-        <div class="social-links" style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem;">
+        <div class="social-links">
             {% if site.email %}
-            <a href="mailto:{{ site.email }}" aria-label="Email"
-                style="color: var(--text-muted); transition: color 0.2s;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="mailto:{{ site.email }}" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
@@ -74,8 +88,8 @@
             {% endif %}
             {% if site.github_username %}
             <a href="https://github.com/{{ site.github_username }}" aria-label="GitHub" target="_blank"
-                rel="noopener noreferrer" style="color: var(--text-muted); transition: color 0.2s;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path
                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
@@ -85,8 +99,8 @@
             {% endif %}
             {% if site.linkedin_username %}
             <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" aria-label="LinkedIn" target="_blank"
-                rel="noopener noreferrer" style="color: var(--text-muted); transition: color 0.2s;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                     <rect x="2" y="9" width="4" height="12"></rect>
@@ -96,8 +110,8 @@
             {% endif %}
             {% if site.instagram_username %}
             <a href="https://www.instagram.com/{{ site.instagram_username }}" aria-label="Instagram" target="_blank"
-                rel="noopener noreferrer" style="color: var(--text-muted); transition: color 0.2s;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -106,10 +120,11 @@
             </a>
             {% endif %}
         </div>
-        <p style="margin: 0;">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+        <p>&copy; {{ 'now' | date: "%Y" }} Domenico De Giorgio.</p>
     </footer>
 
     <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+    {% if page.url == '/' %}<script src="{{ '/assets/js/home.js' | relative_url }}"></script>{% endif %}
 </body>
 
 </html>
