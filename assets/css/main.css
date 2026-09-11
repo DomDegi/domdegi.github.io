@@ -168,6 +168,31 @@ img {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: var(--border-w) solid var(--ink);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* At the very top of the page the bar recedes to a thin accent strip and the
+   nav sits straight on the page; it fills in as soon as you scroll. The solid
+   state is the default so the bar still works with JS disabled. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: var(--band);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.site-header.at-top {
+  background: transparent;
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.site-header.at-top::before {
+  opacity: 1;
 }
 
 .nav-container {
@@ -389,25 +414,21 @@ img {
   flex-shrink: 0;
 }
 
-.hero-title {
-  font-size: clamp(2.1rem, 6.5vw, 3.9rem);
-  margin-bottom: 1rem;
+/* One continuous block: the greeting and the bio share the same large size. */
+.hero-text {
+  width: 100%;
+  text-align: left;
 }
 
-.hero-title .accent {
+.hero-lead {
+  font-size: clamp(1.4rem, 3.3vw, 2.45rem);
+  line-height: 1.3;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.hero-lead .accent {
   color: var(--accent);
-}
-
-.hero-subtitle {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  color: var(--text-muted);
-  margin: 0 auto 1.75rem;
-  max-width: 56ch;
-}
-
-.hero-seeking {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .hero-actions {
