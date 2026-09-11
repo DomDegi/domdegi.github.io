@@ -49,9 +49,6 @@ plugins:
 include:
   - _pages
 
-# LaTeX source for the CV: lives in the repo, compiled by CI, not published.
-exclude:
-  - cv
 #
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
