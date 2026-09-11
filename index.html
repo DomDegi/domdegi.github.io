@@ -94,18 +94,23 @@ permalink: /
           </svg>
         </span>
       </summary>
-      <div class="project-grid project-grid--compact">
-        {% for project in rest %}
-        <a href="{{ project.url | relative_url }}" class="project-card project-card--compact">
-          <div class="project-card__body">
-            <h3 class="project-card__title">{{ project.title }}</h3>
-            <p class="project-card__desc">{{ project.description }}</p>
-            <div class="project-card__tags">
-              {% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+      {% comment %}The wrapper is what home.js animates the height of. It has to
+      be a separate box from the grid: clipping the grid itself just compresses
+      its rows, so the cards would squash rather than be revealed.{% endcomment %}
+      <div class="more-projects__drawer">
+        <div class="project-grid project-grid--compact">
+          {% for project in rest %}
+          <a href="{{ project.url | relative_url }}" class="project-card project-card--compact">
+            <div class="project-card__body">
+              <h3 class="project-card__title">{{ project.title }}</h3>
+              <p class="project-card__desc">{{ project.description }}</p>
+              <div class="project-card__tags">
+                {% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+              </div>
             </div>
-          </div>
-        </a>
-        {% endfor %}
+          </a>
+          {% endfor %}
+        </div>
       </div>
     </details>
   </div>

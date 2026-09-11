@@ -45,8 +45,6 @@
    ========================================================================== */
 :root {
   color-scheme: light;
-  /* Lets `block-size: auto` animate, which the "everything else" list needs. */
-  interpolate-size: allow-keywords;
   --bg: #ffffff;
   --bg-alt: #f3fafc;
   --band: #6387fd;
@@ -762,34 +760,38 @@ img {
   transform: rotate(180deg);
 }
 
-/* The list slides open instead of appearing all at once. ::details-content is
-   the box <details> wraps everything-but-the-summary in, so this animates the
-   native element with no JS and no wrapper div; `interpolate-size` above is
-   what makes `block-size: auto` interpolable. Browsers without either feature
-   fall back to the instant open, which is the behaviour this replaced.
-   The global prefers-reduced-motion rule already kills the transition. */
-.more-projects::details-content {
-  box-sizing: border-box;
-  block-size: 0;
+/* Open, the whole thing reads as one component: the toggle is the lid and the
+   list is a tinted drawer flush beneath it, which home.js grows from zero
+   height so it unfurls rather than appears. */
+.more-projects[open] .more-projects__toggle {
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* The lift would break the seam with the drawer below it. */
+.more-projects[open] .more-projects__toggle:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.more-projects__drawer {
+  background: var(--bg-alt);
+  border: var(--border-w) solid var(--ink);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 1.6rem 1.25rem;
+}
+
+/* Only while the height is being animated, so the cards are revealed from
+   behind the toggle rather than clipped for good — once it has settled their
+   hover shadow needs to be able to paint outside the drawer. */
+.more-projects__drawer.is-animating {
   overflow: hidden;
-  opacity: 0;
-  transition:
-    block-size 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
-    opacity 0.3s ease 0.05s,
-    content-visibility 0.4s allow-discrete;
 }
 
-.more-projects[open]::details-content {
-  block-size: auto;
-  opacity: 1;
-}
-
-/* `overflow: hidden` above clips at the content box, which would cut the cards'
-   hover shadow off. Inset the grid inside its own padding by the shadow's reach
-   and pull the outer edges back out, so the cards sit exactly where they did. */
-.more-projects .project-grid--compact {
-  padding: 1.75rem 8px 8px;
-  margin: 0 -8px -8px;
+/* Closing keeps `open` set until the animation ends, so the chevron needs
+   telling separately or it would not rotate back until the very end. */
+.more-projects.is-closing .more-projects__chevron {
+  transform: none;
 }
 
 /* CV strip */
